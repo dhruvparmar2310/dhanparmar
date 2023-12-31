@@ -1,0 +1,8 @@
+.container {
+    @include media-min(xl) {
+      max-width: 1230px;
+    }
+    @include media-min(xxl) {
+      max-width: 1311px;
+    }
+  }

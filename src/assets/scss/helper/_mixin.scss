@@ -1,0 +1,40 @@
+@mixin checkbox {
+    &:checked ~ label,
+    &:checked ~ span {
+      &:before {
+        border-color: $primary-500;
+        background-color: $primary-500;
+      }
+      &:after {
+        border-color: var(--secondary-200);
+      }
+    }
+    & ~ label,
+    & ~ span {
+      padding-left: 28px;
+      position: relative;
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        border: 1px solid var(--secondary-200);
+        border-radius: 2px;
+        transition: all linear 0.2s;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        left: 5px;
+        top: 6px;
+        height: 6px;
+        width: 11px;
+        border-left: 2px solid transparent;
+        border-bottom: 2px solid transparent;
+        transform: rotate(-45deg);
+        transition: all linear 0.2s;
+      }
+    }
+  }
