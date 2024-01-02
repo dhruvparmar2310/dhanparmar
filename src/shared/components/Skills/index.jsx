@@ -1,4 +1,4 @@
-import { faCode } from '@fortawesome/free-solid-svg-icons'
+import { faCode, faDatabase } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import { FaAngleDown, FaReact } from 'react-icons/fa'
@@ -6,7 +6,8 @@ import { FaAngleDown, FaReact } from 'react-icons/fa'
 const Skills = () => {
   const [buttonToggle, setButtonToggle] = useState({
     frontEnd: true,
-    react: false
+    react: false,
+    database: false
   })
   return (
         <>
@@ -25,11 +26,20 @@ const Skills = () => {
                             <FaAngleDown className='skills-arrow' />
                         </div>
                         <div className={`skills-header ${buttonToggle?.react && 'skills-active'}`} data-target='#react' onClick={() => setButtonToggle({ react: true })}>
-                            <FaReact className='skills-icon' />
+                            <FaReact className='skills-icon' size='43px' />
 
                             <div className=''>
                                 <h1 className="skills-title">ReactJs Developer</h1>
                                 <span className="skills-substitle">More than 1 Year</span>
+                            </div>
+                            <FaAngleDown className='skills-arrow' />
+                        </div>
+                        <div className={`skills-header ${buttonToggle?.database && 'skills-active'}`} data-target='#database' onClick={() => setButtonToggle({ database: true })}>
+                            <FontAwesomeIcon icon={faDatabase} className='skills-icon mx-2' />
+
+                            <div className=''>
+                                <h1 className="skills-title mx-2">DataBase</h1>
+                                <span className="skills-substitle mx-2">More than 1 Year</span>
                             </div>
                             <FaAngleDown className='skills-arrow' />
                         </div>
@@ -62,21 +72,21 @@ const Skills = () => {
                                     <div className='skills-data'>
                                         <div className='skills-titles'>
                                             <h3 className='skills-name'>JavaScript</h3>
-                                            <span className='skills-number'>60%</span>
+                                            <span className='skills-number'>75%</span>
                                         </div>
 
                                         <div className='skills-bar'>
-                                            <span className='skills-percentage' style={{ width: '60%' }}></span>
+                                            <span className='skills-percentage' style={{ width: '75%' }}></span>
                                         </div>
                                     </div>
                                     <div className='skills-data'>
                                         <div className='skills-titles'>
-                                            <h3 className='skills-name'>TypeScript</h3>
-                                            <span className='skills-number'>60%</span>
+                                            <h3 className='skills-name'>Bootstrap</h3>
+                                            <span className='skills-number'>95%</span>
                                         </div>
 
                                         <div className='skills-bar'>
-                                            <span className='skills-percentage' style={{ width: '60%' }}></span>
+                                            <span className='skills-percentage' style={{ width: '95%' }}></span>
                                         </div>
                                     </div>
                                 </div>
@@ -108,6 +118,16 @@ const Skills = () => {
                                     </div>
                                     <div className='skills-data'>
                                         <div className='skills-titles'>
+                                            <h3 className='skills-name'>Redux</h3>
+                                            <span className='skills-number'>85%</span>
+                                        </div>
+
+                                        <div className='skills-bar'>
+                                            <span className='skills-percentage' style={{ width: '85%' }}></span>
+                                        </div>
+                                    </div>
+                                    <div className='skills-data'>
+                                        <div className='skills-titles'>
                                             <h3 className='skills-name'>React Query</h3>
                                             <span className='skills-number'>95%</span>
                                         </div>
@@ -116,6 +136,13 @@ const Skills = () => {
                                             <span className='skills-percentage' style={{ width: '95%' }}></span>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        }
+
+                        {buttonToggle?.database &&
+                            <div className='skills-group' data-content id='database'>
+                                <div className='skills-list grid'>
                                     <div className='skills-data'>
                                         <div className='skills-titles'>
                                             <h3 className='skills-name'>MS SQL</h3>

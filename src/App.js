@@ -36,7 +36,7 @@ function App () {
 
                 <div className=''>
                   <h3 className='info-title'>Whatsapp</h3>
-                  <span className='info-subtitle'>958-662-7577</span>
+                  <span className='info-subtitle' onClick={() => window.open('https://wa.me/9586627577')}>958-662-7577</span>
                 </div>
               </div>
 
@@ -45,7 +45,7 @@ function App () {
 
                 <div className=''>
                   <h3 className='info-title'>Email</h3>
-                  <span className='info-subtitle'>dhanparmar23@gmail.com</span>
+                  <span className='info-subtitle' onClick={() => { window.location.href = 'mailto:dhanparmar23@gmail.com' }}>dhanparmar23@gmail.com</span>
                 </div>
               </div>
             </div>

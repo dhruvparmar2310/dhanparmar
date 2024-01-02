@@ -62,6 +62,7 @@
                     color: var(--title-color);
                     font-weight: var(--font-medium);
                     position: relative;
+                    cursor: pointer;
 
                     &.active, &:hover {
                         color: var(--skin-color);

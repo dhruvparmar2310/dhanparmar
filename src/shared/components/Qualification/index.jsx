@@ -18,7 +18,7 @@ const Qualification = () => {
                                 <h3 className="timeline-title">K.G. Dholakiya School, Rajkot</h3>
                                 <p className="timeline-text">SSC</p>
                                 <span className='timeline-date'>
-                                    <FontAwesomeIcon icon={faCalendarDays} /> 2017
+                                    <FontAwesomeIcon icon={faCalendarDays} /> 2016 - 2017
                                 </span>
                             </div>
                         </div>
@@ -29,7 +29,7 @@ const Qualification = () => {
                                 <h3 className="timeline-title">Shree P.V. Modi School, Rajkot</h3>
                                 <p className="timeline-text">HSC</p>
                                 <span className='timeline-date'>
-                                    <FontAwesomeIcon icon={faCalendarDays} /> 2019
+                                    <FontAwesomeIcon icon={faCalendarDays} /> 2017 - 2019
                                 </span>
                             </div>
                         </div>
