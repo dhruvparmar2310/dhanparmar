@@ -10,6 +10,7 @@ import About from './shared/components/About'
 import Qualification from './shared/components/Qualification'
 import Skills from './shared/components/Skills'
 import Work from './shared/components/Work'
+import Services from './shared/components/Services'
 
 function App () {
   return (
@@ -56,6 +57,7 @@ function App () {
         <Qualification />
         <Skills />
         <Work />
+        <Services />
       </main>
     </>
   )
