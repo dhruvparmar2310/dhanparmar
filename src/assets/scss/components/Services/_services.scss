@@ -7,7 +7,7 @@
     .service-content {
         position: relative;
         background-color: var(--box-color);
-        padding: 6rem 0 2rem 2.5rem;
+        padding: 2rem 0 2rem 2.5rem;
         border-radius: 0.25rem;
 
         .services-icon {
@@ -41,19 +41,78 @@
             }
         }
 
-        .services-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: var(--z-modal);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 1rem;
-            transition: all 0.3s;
+    }
+}
+
+.services-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: var(--z-modal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    transition: all 0.3s;
+
+    .modal-content {
+        width: 650px;
+        position: relative;
+        box-sizing: border-box;
+        overflow: hidden;
+        background-color: var(--box-color);
+        border-radius: 0.5rem;
+        padding: 1.5rem 0.15rem;
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--skin-color);
+            cursor: pointer;
+        }
+
+        .modal-title, .modal-description  {
+            text-align: center;
+        }
+
+        .modal-title {
+            font-size: var(--h3-font-size);
+            font-weight: var(--font-medium);
+            margin-bottom: var(--mb-0-1);
+        }
+
+        .modal-description {
+            font-size: var(--small-font-size);
+            padding: 0 3.5rem;
+            margin-bottom: var(--mb-2)
+        }
+
+        .modal-services {
+            display: grid;
+            width: 580px;
+            text-align: justify;
+            row-gap: var(--mb-0-75);
+
+            .modal-service {
+                display: flex;
+                align-items: center;
+                column-gap: 0.5rem;
+
+                .modal-icon {
+                    color: var(--skin-color);
+                    font-size: 1.1rem;
+                }
+
+                .modal-info {
+                    font-size: var(--small-font-size);
+                    margin: 0 0 0 3px;
+                }
+            }
         }
     }
 }

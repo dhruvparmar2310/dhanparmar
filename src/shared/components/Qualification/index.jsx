@@ -1,6 +1,8 @@
 import { faAward, faCalendarDays, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { MdOutlineFileDownload } from 'react-icons/md'
+import resume from '../../../assets/data/Dhruv_Parmar.pdf'
 
 const Qualification = () => {
   return (
@@ -70,6 +72,13 @@ const Qualification = () => {
                             </div>
                         </div>
                     </div>
+
+                </div>
+
+                <div className='text-center'>
+                    <a href={resume} download='Dhruv_Parmar' rel='moreferrer' className='button'>
+                        <MdOutlineFileDownload className='button-icon' /> Resume
+                    </a>
                 </div>
             </section>
         </>
