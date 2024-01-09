@@ -17,6 +17,38 @@ const Sidebar = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+    //   const homeSection = document.getElementById('home')
+      const aboutSection = document.getElementById('about')
+      const skillSection = document.getElementById('skills')
+      const workSection = document.getElementById('work')
+      const servicesSection = document.getElementById('services')
+      const contactSection = document.getElementById('contact')
+
+      const scrollPosition = window.scrollY
+
+      if (scrollPosition < aboutSection?.offsetTop) {
+        setCurrentSection('home')
+      } else if (scrollPosition >= aboutSection?.offsetTop && scrollPosition < skillSection?.offsetTop) {
+        setCurrentSection('about')
+      } else if (scrollPosition >= skillSection?.offsetTop && scrollPosition < workSection?.offsetTop) {
+        setCurrentSection('skills')
+      } else if (scrollPosition >= workSection?.offsetTop && scrollPosition < servicesSection?.offsetTop) {
+        setCurrentSection('work')
+      } else if (scrollPosition >= servicesSection?.offsetTop && scrollPosition < contactSection?.offsetTop) {
+        setCurrentSection('services')
+      } else {
+        setCurrentSection('contact')
+      }
+    }
+
+    window?.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
   return (
     <>
         <aside className='sidebar' id='sidebar'>

@@ -11,6 +11,7 @@ import Qualification from './shared/components/Qualification'
 import Skills from './shared/components/Skills'
 import Work from './shared/components/Work'
 import Services from './shared/components/Services'
+import ContactUs from './shared/components/Contact'
 
 function App () {
   return (
@@ -58,6 +59,7 @@ function App () {
         <Skills />
         <Work />
         <Services />
+        <ContactUs />
       </main>
     </>
   )
