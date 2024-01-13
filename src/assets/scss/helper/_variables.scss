@@ -3,62 +3,62 @@
 
     /*=============== VARIABLES CSS ===============*/
     :root {
-        /*===== Colors =====*/
-        --hue-color:242;
-    
-        /* HSL Color Mode */
-        --skin-color: hsl(342, 92%, 46%);
-        --title-color: hsl(var(--hue-color), 8%, 95%);
-        --text-color: hsl(var(--hue-color), 8%, 85%);
-        --body-color: hsl(var(--hue-color), 19%, 5%);
-        --box-color: hsl(var(--hue-color), 14%, 10%);
-        --scroll-bar-color: hsl(var(--hue-color), 12%, 38%);
-        --scroll-thumb-color: hsl(var(--hue-color), 12%, 26%);
-    
-        /*===== Font and Typography =====*/
-        --body-font: 'Poppins', sans-serif;
-    
-        /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
-        --biggest-font-size: 3rem;
-        --h1-font-size: 2.25rem;
-        --h2-font-size: 1.5rem;
-        --h3-font-size: 1.25rem;
-        --normal-font-size: 1rem;
-        --small-font-size: .875rem;
-        --smaller-font-size: .813rem;
-    
-        /*===== Font Weight =====*/
-        --font-medium: 500;
-        --font-bold: 600;
-    
-        /*===== Margenes Bottom =====*/
-        --mb-0-25: .25rem;
-        --mb-0-5: .5rem;
-        --mb-0-75: .75rem;
-        --mb-1: 1rem;
-        --mb-1-5: 1.5rem;
-        --mb-2: 2rem;
-        --mb-2-5: 2.5rem;
-        --mb-3: 3rem;
-    
-        /*===== Z Index =====*/
-        --z-fixed: 10;
-        --z-modal: 100;
+      /*===== Colors =====*/
+      --hue-color: 242;
+
+      /* HSL Color Mode */
+      --skin-color: hsl(342, 92%, 46%);
+      --title-color: hsl(var(--hue-color), 8%, 95%);
+      --text-color: hsl(var(--hue-color), 8%, 85%);
+      --body-color: hsl(var(--hue-color), 19%, 5%);
+      --box-color: hsl(var(--hue-color), 14%, 10%);
+      --scroll-bar-color: hsl(var(--hue-color), 12%, 38%);
+      --scroll-thumb-color: hsl(var(--hue-color), 12%, 26%);
+
+      /*===== Font and Typography =====*/
+      --body-font: 'Poppins', sans-serif;
+
+      /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
+      --biggest-font-size: 3rem;
+      --h1-font-size: 2.25rem;
+      --h2-font-size: 1.5rem;
+      --h3-font-size: 1.25rem;
+      --normal-font-size: 1rem;
+      --small-font-size: .875rem;
+      --smaller-font-size: .813rem;
+
+      /*===== Font Weight =====*/
+      --font-medium: 500;
+      --font-bold: 600;
+
+      /*===== Margenes Bottom =====*/
+      --mb-0-25: .25rem;
+      --mb-0-5: .5rem;
+      --mb-0-75: .75rem;
+      --mb-1: 1rem;
+      --mb-1-5: 1.5rem;
+      --mb-2: 2rem;
+      --mb-2-5: 2.5rem;
+      --mb-3: 3rem;
+
+      /*===== Z Index =====*/
+      --z-fixed: 10;
+      --z-modal: 100;
     }
-    
+
     /* Responsive Typography */
     @media screen and (max-width: 1024px) {
-        :root {
-            --biggest-font-size: 2rem;
-            --h1-font-size: 1.5rem;
-            --h2-font-size: 1.25rem;
-            --h3-font-size: 1.125rem;
-            --normal-font-size: .938rem;
-            --small-font-size: .813rem;
-            --smaller-font-size: .75rem;
-        }
+      :root {
+        --biggest-font-size: 2rem;
+        --h1-font-size: 1.5rem;
+        --h2-font-size: 1.25rem;
+        --h3-font-size: 1.125rem;
+        --normal-font-size: .938rem;
+        --small-font-size: .813rem;
+        --smaller-font-size: .75rem;
+      }
     }
-    
+
     /*=============== BASE ===============*/
     * {
       margin: 0;
@@ -69,8 +69,10 @@
     html {
       scroll-behavior: smooth;
     }
-    
-    body, button, input {
+
+    body,
+    button,
+    input {
       font-family: var(--body-font);
       font-size: var(--normal-font-size);
     }
@@ -80,7 +82,9 @@
       color: var(--text-color);
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       color: var(--title-color);
       font-weight: var(--font-bold);
     }
@@ -102,10 +106,12 @@
       cursor: pointer;
     }
 
-    button, input {
+    button,
+    input {
       border: none;
       outline: none;
     }
+
     /*=============== LAYOUT ===============*/
     .container {
       max-width: 1250px;
@@ -116,7 +122,7 @@
         display: grid;
       }
     }
-    
+
     /*=============== REUSABLE CSS CLASSES ===============*/
     .section {
       padding: 3rem 0 2rem;
@@ -135,18 +141,19 @@
         }
       }
     }
-    
+
     /*=============== SIDEBAR ===============*/
-    
-    
+
+
     /* Active Link */
-    
-    
+
+
     /*=============== MAIN ===============*/
     .main {
       margin-left: 100px;
+      overflow-x: hidden;
     }
-    
+
     /*===== Home Section =====*/
     .home {
       background: url('../../img/home-bg.png');
@@ -193,7 +200,8 @@
             display: flex;
             align-items: center;
 
-            .info-title, .info-subtitle {
+            .info-title,
+            .info-subtitle {
               font-size: var(--small-font-size);
             }
 
@@ -253,7 +261,7 @@
         }
       }
     }
-    
+
     /*===== Buttons =====*/
     .button {
       display: inline-flex;
@@ -266,7 +274,7 @@
       font-weight: var(--font-medium);
       position: relative;
       z-index: 1;
-      
+
       .button-icon {
         font-size: 1.25rem;
       }
@@ -290,65 +298,168 @@
         transform: scale(1);
       }
     }
-    
+
     /*===== About Section =====*/
-    
-    
+
+
     /*===== Qualification Section =====*/
-    
-    
+
+
     /*===== Skills Section =====*/
-    
-    
+
+
     /*===== Work Section =====*/
-    
-    
+
+
     /* Active Item Work */
-    
-    
+
+
     /* Portfolio Popup */
-    
-    
+
+
     /*===== Services Section =====*/
-    
-    
+
+
     /* Active Modal*/
-    
-    
+
+
     /*===== Testimonial Section =====*/
-    
-    
+
+
     /* Swiper Class */
-    
-    
+
+
     /*===== Contact Section =====*/
-    
-    
+
+
     /*=============== FOOTER ===============*/
-    
-    
+    .footer {
+      display: grid;
+      padding-top: 2rem;
+
+      .footer-bg {
+        background-color: var(--box-color);
+        padding: 1.5rem 0;
+
+        .footer-container {
+          grid-template-columns: repeat(3, 1fr);
+          column-gap: 1.6rem;
+
+          .footer-title {
+            color: var(--title-color);
+            font-size: var(--h1-font-size);
+            margin-bottom: var(--mb-0-25);
+          }
+
+          .footer-subtitle {
+            color: var(--title-color);
+            font-size: var(--small-font-size);
+          }
+
+          .footer-links {
+            display: flex;
+            justify-content: center;
+            column-gap: 2rem;
+
+            .footer-link {
+              color: var(--title-color);
+
+              &:hover {
+                color: var(--skin-color);
+              }
+            }
+
+          }
+
+          .footer-socials {
+            justify-self: flex-end;
+
+            .social-link {
+              color: var(--title-color);
+              font-size: 1.2rem;
+              margin-right: var(--mb-1-5);
+
+              &:hover {
+                color: var(--skin-color);
+              }
+            }
+          }
+
+        }
+
+        .footer-copy {
+          padding: 0 12px;
+          font-size: var(--smaller-font-size);
+          margin-top: 1rem;
+          margin-bottom: 0;
+        }
+      }
+    }
+
     /*=============== SCROLL UP ===============*/
-    
-    
+    ::-webkit-scrollbar {
+      width: 0.60rem;
+      background-color: var(--scroll-bar-color);
+      border-radius: 0.5rem;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--scroll-thumb-color);
+      border-radius: 0.5rem;
+    }
+
     /* Show Scroll Up*/
-    
-    
+
+
     /*=============== SCROLL BAR ===============*/
-    
-    
+
+
     /*========== BREAKPOINTS ==========*/
     /* For Large Devices */
-    @media screen and (max-width: 1408px) {}
-    
+    @media screen and (max-width: 1408px) {
+      .container {
+        margin-left: var(--mb-2-5);
+        margin-right: var(--mb-2-5);
+      }
+    }
+
     @media screen and (max-width: 1216px) {}
-    
-    @media screen and (max-width: 1024px) {}
-    
+
+    @media screen and (max-width: 1024px) {
+      .container {
+        margin-left: var(--mb-1-5);
+        margin-right: var(--mb-1-5);
+      }
+
+      .main {
+        margin-left: 0;
+      }
+    }
+
     /* For Medium Devices */
-    @media screen and (max-width: 768px) {}
-    
+    @media screen and (max-width: 768px) {
+      .footer {
+        .footer-bg {
+          padding: 2rem 0 2rem;
+          .footer-container {
+            margin: 0;
+            grid-template-columns: repeat(2, 1fr);
+            row-gap: 1rem;
+            
+            .footer-socials {
+              justify-self: start;
+            }
+
+            .footer-links {
+              flex-direction: column;
+              row-gap: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+
     @media screen and (max-width: 576px) {}
-    
+
     /* For Small Devices */
     @media screen and (max-width: 350px) {}
-    

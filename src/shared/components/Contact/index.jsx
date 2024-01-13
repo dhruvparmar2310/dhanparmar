@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form } from 'react-bootstrap'
 import { Controller, useForm } from 'react-hook-form'
-import { FaPaperPlane, FaWhatsapp } from 'react-icons/fa'
+import { FaInstagram, FaPaperPlane, FaWhatsapp } from 'react-icons/fa'
 import { IoMdMail } from 'react-icons/io'
 
 const ContactUs = () => {
@@ -35,6 +35,15 @@ const ContactUs = () => {
 
                                 <h3 className="card-title">Whatsapp</h3>
                                 <span className="card-data">9586627577</span>
+                            </div>
+                        </div>
+
+                        <div className="contact-info mt-2">
+                            <div className="contact-card">
+                                <FaInstagram className='card-icon' />
+
+                                <h3 className="card-title">Instagram</h3>
+                                <span className="card-data">@dhan.parmar23</span>
                             </div>
                         </div>
                     </div>

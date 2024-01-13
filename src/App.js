@@ -1,8 +1,8 @@
 import React from 'react'
 import Sidebar from './shared/components/Sidebar'
 import SocialMedia from './shared/components/Social-Media'
-import { FaWhatsapp } from 'react-icons/fa'
-import { IoMdMail } from 'react-icons/io'
+import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
+import { IoLogoInstagram, IoMdMail } from 'react-icons/io'
 import logo from './assets/img/home-img.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
@@ -60,6 +60,43 @@ function App () {
         <Work />
         <Services />
         <ContactUs />
+
+        <footer className='footer'>
+          <div className='footer-bg'>
+            <div className='footer-container container grid'>
+              <div>
+                <h1 className='footer-title'>Dhruv Parmar</h1>
+                <span className='footer-subtitle'>Front End Developer</span>
+              </div>
+
+              <ul className='footer-links'>
+                <li>
+                  <a href="#services" className='footer-link'>Services</a>
+                </li>
+                <li>
+                  <a href="#work" className='footer-link'>Work</a>
+                </li>
+                <li>
+                  <a href="#contact" className='footer-link'>Contact</a>
+                </li>
+              </ul>
+
+              <div className='footer-socials'>
+                <a href='https://in.linkedin.com/in/dhruv-parmar-484636227' title='Dhruv Parmar | Linkedin' target='_blank' className='social-link' rel="noreferrer">
+                  <FaLinkedin />
+                </a>
+                <a href='https://www.instagram.com/dhan.parmar23/' target='_blank' title='Dhruv Parmar | Instagram' className='social-link' rel="noreferrer">
+                  <IoLogoInstagram />
+                </a>
+                <a href='https://github.com/dhruvparmar2310' target='_blank' title='Dhruv Parmar | Github' className='social-link' rel="noreferrer">
+                  <FaGithub />
+                </a>
+              </div>
+            </div>
+
+            <p className='footer-copy'>Copyright &#169; 2024. All right reserved.</p>
+          </div>
+        </footer>
       </main>
     </>
   )

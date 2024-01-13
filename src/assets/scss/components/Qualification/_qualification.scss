@@ -66,3 +66,17 @@
         }
     }
 }
+
+@media screen and (max-width: 1024px) {
+    .qualification-container {
+        grid-template-columns: repeat(2, 290px) !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .qualification-container {
+        margin: 0;
+        grid-template-columns: 290px !important;
+        row-gap: 3rem !important;
+    }
+}

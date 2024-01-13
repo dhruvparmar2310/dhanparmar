@@ -1,3 +1,5 @@
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
 import { FiShare2 } from 'react-icons/fi'
 
@@ -51,6 +53,9 @@ const Sidebar = () => {
   }, [])
   return (
     <>
+        <div className='nav-toggle' id='nav-toggle'>
+          <FontAwesomeIcon icon={faBars} />
+        </div>
         <aside className='sidebar' id='sidebar'>
             <nav className='nav'>
                 <div className='nav-logo'>
@@ -83,8 +88,11 @@ const Sidebar = () => {
                 </div>
 
                 <div className='btn-share'>
-                    {/* <FontAwesomeIcon icon={faShareNodes} /> */}
                     <FiShare2 />
+                </div>
+
+                <div className='nav-close' id='nav-close'>
+                  <FontAwesomeIcon icon={faTimes} />
                 </div>
             </nav>
         </aside>

@@ -157,5 +157,51 @@
             }
         }
     }
+}
 
+@media screen and (max-width: 1216px) {
+    .work-container {
+        grid-template-columns: repeat(2, 330px);
+        gap: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .work-card {
+        padding: 1rem !important;
+
+        .work-img {
+            margin-bottom: var(--mb-0-75) !important;
+        }
+
+        .work-title {
+            margin-bottom: var(--mb-0-25) !important;
+        }
+
+        .portfolio-item-details {
+            margin-bottom: var(--mb-1-5) !important;
+        }
+    }
+
+    .details-info {
+        li {
+            margin-bottom: var(--mb-0-5) !important;
+        }
+    }
+
+    .details-title {
+        margin-bottom: var(--mb-0-75) !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .work-container {
+        margin: 0;
+        grid-template-columns: 330px;
+
+        .popup-inner {
+            width: 420px !important;
+            padding: 2.8rem 1.5rem 2.5rem !important;
+        }
+    }
 }

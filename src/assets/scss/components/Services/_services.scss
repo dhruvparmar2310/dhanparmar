@@ -116,3 +116,29 @@
         }
     }
 }
+
+@media screen and (max-width: 1024px) {
+    .services-container {
+        grid-template-columns: repeat(3, 220px) !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .services {
+        margin: 0;
+        
+        .services-container {
+            margin: 0;
+            grid-template-columns: repeat(2, 250px) !important;
+            gap: 1.5rem;
+    
+            .service-content {
+                padding: 1.5rem 0.5rem 1.25rem 1.5rem;
+    
+                .services-icon {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    } 
+}

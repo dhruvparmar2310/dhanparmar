@@ -84,3 +84,21 @@
         }
     }
 }
+
+@media screen and (max-width: 1024px) {
+    .skills-container {
+        grid-template-columns: 340px 300px;
+
+        .skills-list {
+            row-gap: 1.7rem !important;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .skills-container {
+        margin: 0;
+        grid-template-columns: 300px;
+        row-gap: 3rem;
+    }
+}

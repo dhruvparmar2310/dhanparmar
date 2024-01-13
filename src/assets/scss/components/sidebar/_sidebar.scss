@@ -1,3 +1,19 @@
+.nav-toggle {
+    width: 36px;
+    height: 32px;
+    cursor: pointer;
+    position: fixed;
+    right: 1.5rem;
+    top: 2rem;
+    font-size: 1.2rem;
+    border-radius: 0.25rem;
+    background-color: var(--skin-color);
+    color: var(--title-color);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
 .sidebar {
     position: fixed;
     width: 100px;
@@ -64,11 +80,13 @@
                     position: relative;
                     cursor: pointer;
 
-                    &.active, &:hover {
+                    &.active,
+                    &:hover {
                         color: var(--skin-color);
                     }
 
-                    &.active::after, &:hover::after {
+                    &.active::after,
+                    &:hover::after {
                         position: absolute;
                         content: '';
                         width: 6px;
@@ -83,5 +101,60 @@
                 }
             }
         }
+    }
+
+    .nav-close {
+        font-size: 1.5rem;
+        position: absolute;
+        top: 1rem;
+        right: 1.25rem;
+        cursor: pointer;
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .sidebar {
+        width: 100%;
+        z-index: 999;
+        transform: translateX(-100%);
+
+        .nav-menu {
+            width: 100%;
+            height: 100%;
+            transform: rotate(0deg) translateX(0);
+            display: flex;
+            justify-content: center;
+
+            .nav-list {
+                flex-direction: column !important;
+                height: 100%;
+                justify-content: center !important;
+                align-items: center !important;
+
+                .nav-link {
+                    padding: 1rem 0 !important;
+                    line-height: 1.5rem !important;
+
+                    &.active::after, &:hover::after {
+                        bottom: 0 !important;
+                    }
+                }
+            }
+        }
+
+        .nav-close {
+            display: block;
+        }
+
+        .nav-logo,
+        .btn-share {
+            display: none;
+        }
+        
+    }
+
+    .nav-toggle {
+        display: flex;
     }
 }
