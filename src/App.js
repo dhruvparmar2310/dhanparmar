@@ -3,7 +3,7 @@ import Sidebar from './shared/components/Sidebar'
 import SocialMedia from './shared/components/Social-Media'
 import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
 import { IoLogoInstagram, IoMdMail } from 'react-icons/io'
-import logo from './assets/img/home-img.png'
+import logo from './assets/img/home-img-3.jpeg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import About from './shared/components/About'
@@ -22,7 +22,7 @@ function App () {
           <div className='home-container container grid'>
             <SocialMedia />
 
-            <img src={logo} alt='' className='hero' />
+            <img src={logo} alt='' className='home-img' />
 
             <div className='data'>
               <h1 className='title'>Hi, I&apos;am Dhruv</h1>

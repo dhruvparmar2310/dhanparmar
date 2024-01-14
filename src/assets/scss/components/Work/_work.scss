@@ -54,8 +54,9 @@
     align-items: center;
     column-gap: 0.75rem;
     margin-bottom: 2rem;
-
+    
     .work-item {
+        transition: all 0.3s ease-in-out;
         cursor: pointer;
         color: var(--title-color);
         padding: 0.25rem 0.75rem;
@@ -81,7 +82,7 @@
     justify-content: center;
     align-items: center;
     padding: 0 1rem;
-    transition: all 0.3s;
+    transition: all 0.5s ease-in-out;
 
     .popup-inner {
         background-color: var(--box-color);
@@ -198,10 +199,81 @@
     .work-container {
         margin: 0;
         grid-template-columns: 330px;
+    }
 
-        .popup-inner {
-            width: 420px !important;
-            padding: 2.8rem 1.5rem 2.5rem !important;
+    .popup-inner {
+        width: 420px !important;
+        padding: 2.8rem 1.5rem 2.5rem !important;
+
+        .popup-content {
+            grid-template-columns: 1fr !important;
+            row-gap: 1.6rem;
+
+            .popup-close {
+                top: 0.5rem !important;
+            }
+
+            .details-title {
+                font-size: var(--normal-font-size) !important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) { 
+    .work-container {
+        grid-template-columns: 320px;
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 350px) { 
+    .work-filters {
+        column-gap: 0.25rem !important;
+        margin-bottom: var(--mb-1);
+
+        .work-item {
+            font-size: var(--small-font-size) !important;
+        }
+    }
+
+    .work-container {
+        grid-template-columns: 290px;
+
+        .work-card {
+            .work-img {
+                height: 100px;
+                min-height: 140px;
+            }
+        }
+    }
+
+    .popup-inner {
+        padding-bottom: 5px !important;
+        .popup-content {
+            grid-template-columns: 270px !important;
+            overflow: hidden;
+
+            .popup-info {
+                .popup-body {
+                    .details-title {
+                        font-size: var(--h2-font-size) !important;
+                    }
+                    .details-description {
+                        word-wrap: break-word !important;
+                        font-size: var(--smaller-font-size) !important;
+                        margin-bottom: var(--mb-1-5) !important;
+                    }
+
+                    .details-info {
+                        span {
+                            a {
+                                word-wrap: break-word;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

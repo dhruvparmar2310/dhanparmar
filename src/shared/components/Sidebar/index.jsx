@@ -5,6 +5,7 @@ import { FiShare2 } from 'react-icons/fi'
 
 const Sidebar = () => {
   const [currentSection, setCurrentSection] = useState('home')
+  const [show, setShow] = useState(false)
 
   const handleClick = (e, data) => {
     e.preventDefault()
@@ -14,6 +15,8 @@ const Sidebar = () => {
       section.scrollIntoView({ behavior: 'smooth' })
       setCurrentSection(data)
     }
+
+    setShow(!show)
   }
 
   useEffect(() => {
@@ -53,10 +56,10 @@ const Sidebar = () => {
   }, [])
   return (
     <>
-        <div className='nav-toggle' id='nav-toggle'>
+        <div className='nav-toggle' id='nav-toggle' onClick={() => setShow(!show)}>
           <FontAwesomeIcon icon={faBars} />
         </div>
-        <aside className='sidebar' id='sidebar'>
+        <aside className={`sidebar ${show ? 'show-sidebar' : ''}`} id='sidebar'>
             <nav className='nav'>
                 <div className='nav-logo'>
                     <a href='/' className='logo-text'>DP</a>
@@ -91,7 +94,7 @@ const Sidebar = () => {
                     <FiShare2 />
                 </div>
 
-                <div className='nav-close' id='nav-close'>
+                <div className='nav-close' id='nav-close' onClick={() => setShow(!show)}>
                   <FontAwesomeIcon icon={faTimes} />
                 </div>
             </nav>

@@ -102,3 +102,41 @@
         row-gap: 3rem;
     }
 }
+
+@media screen and (max-width: 576px) {
+    .skills-container {
+        grid-template-columns: 350px !important;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .skills-container {
+        grid-template-columns: 290px !important;
+        row-gap: 1.5rem !important;
+
+        .skills-tabs {
+            .skills-header {
+                margin-bottom: var(--mb-1-5) !important;
+
+                svg {
+                    height: 1.5rem;
+
+                    &.react {
+                        position: relative;
+                        right: 5px;
+                        margin: 0;
+                        height: 2rem !important;
+                    }
+                }
+
+                .skills-title {
+                    font-size: var(--normal-font-size);
+                }
+
+                .skills-substitle {
+                    font-size: var(--smaller-font-size) !important;
+                }
+            }
+        }
+    }
+}

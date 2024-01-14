@@ -98,3 +98,34 @@
         }
     }
 }
+
+@media screen and (max-width: 576px) {
+    .about-info {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    .about-description {
+        padding: 0 !important;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .about-container {
+        row-gap: 2rem;
+
+        .about-heading {
+            font-size: var(--normal-font-size) !important;
+        }
+
+        .about-description {
+            font-size: var(--smaller-font-size) !important;
+            margin-bottom: var(--mb-1-5) !important;
+        }
+
+        .about-info {
+            grid-template-columns: repeat(2, 1fr) !important;
+            row-gap: 0.5rem;
+            margin-bottom: var(--mb-1-5) !important;
+        }
+    }
+}

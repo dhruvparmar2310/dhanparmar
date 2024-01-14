@@ -26,7 +26,7 @@ const Skills = () => {
                             <FaAngleDown className='skills-arrow' />
                         </div>
                         <div className={`skills-header ${buttonToggle?.react && 'skills-active'}`} data-target='#react' onClick={() => setButtonToggle({ react: true })}>
-                            <FaReact className='skills-icon' size='43px' />
+                            <FaReact className='skills-icon react' size='43px' />
 
                             <div className=''>
                                 <h1 className="skills-title">ReactJs Developer</h1>

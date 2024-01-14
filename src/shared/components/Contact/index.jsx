@@ -8,10 +8,12 @@ const ContactUs = () => {
   const {
     handleSubmit,
     formState: { errors },
-    control, watch
+    control
   } = useForm({ mode: 'all' })
 
   function onSubmit (data) {
+    console.log('data :>> ', data)
+    // href={`https://wa.me/9586627577?text=Hello%20there,%20I'am%20${watch('sName')}%20and%2C%20I%20wanted%20to%20discuss%20about%20${watch('sSubject')}%20that,%20${watch('sMessage')}`}
   }
   return (
         <>
@@ -56,11 +58,12 @@ const ContactUs = () => {
                                     <Controller
                                         name='sName'
                                         control={control}
-                                        rules={{ required: { value: true, message: '' } }}
+                                        rules={{ required: { value: true, message: 'Name is required.' } }}
                                         render={({ field: { onChange, value, ref } }) => (
                                             <Form.Control
                                                 ref={ref}
                                                 type="text"
+                                                className={`form-control ${errors && errors.sName}`}
                                                 placeholder="Enter your name"
                                                 value={value}
                                                 onChange={onChange}
@@ -76,7 +79,7 @@ const ContactUs = () => {
                                     <Controller
                                         name='sSubject'
                                         control={control}
-                                        rules={{ required: { value: true, message: '' } }}
+                                        rules={{ required: { value: true, message: 'Subject to discuss is required.' } }}
                                         render={({ field: { onChange, value, ref } }) => (
                                             <Form.Control
                                                 ref={ref}
@@ -84,6 +87,7 @@ const ContactUs = () => {
                                                 placeholder="Enter topic to discuss"
                                                 value={value}
                                                 onChange={onChange}
+                                                className={`form-control ${errors && errors.sSubject}`}
                                             />
                                         )}
                                     />
@@ -96,7 +100,7 @@ const ContactUs = () => {
                                     <Controller
                                         name='sMessage'
                                         control={control}
-                                        rules={{ required: { value: true, message: '' } }}
+                                        rules={{ required: { value: true, message: 'Message is required.' } }}
                                         render={({ field: { onChange, value, ref } }) => (
                                             <Form.Control
                                                 as="textarea"
@@ -104,6 +108,7 @@ const ContactUs = () => {
                                                 ref={ref}
                                                 placeholder="Enter the message..."
                                                 value={value}
+                                                className={`form-control ${errors && errors.sMessage}`}
                                                 onChange={onChange}
                                             />
                                         )}
@@ -113,9 +118,9 @@ const ContactUs = () => {
                             </div>
 
                             <div className='mt-3'>
-                                <a href={`https://wa.me/9586627577?text=Hello%20there,%20myself%20${watch('sName')}%20and%2C%20I%20wanted%20to%20discuss%20about%20${watch('sSubject')}%20that%20${watch('sMessage')}`} className='button'>
+                                <button type='submit' className='button'>
                                     <FaPaperPlane className='button-icon' /> Send Message
-                                </a>
+                                </button>
                             </div>
                         </Form>
                     </div>

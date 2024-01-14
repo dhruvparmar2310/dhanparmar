@@ -80,3 +80,39 @@
         row-gap: 3rem !important;
     }
 }
+
+@media screen and (max-width: 576px) {
+    .qualification-container {
+        grid-template-columns: 300px !important;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .qualification-container {
+        row-gap: 0.5rem !important;
+
+        .qualification-title {
+            font-size: var(--normal-font-size) !important;
+            margin-bottom: var(--mb-1) !important;
+        }
+    
+        .timeline {
+            .timeline-item {
+                margin-bottom: var(--mb-1-5) !important;
+
+                .timeline-title {
+                    font-size: var(--small-font-size);
+                }
+
+                .timeline-text {
+                    font-size: var(--smaller-font-size) !important;
+                }
+                
+                .timeline-date {
+                    font-size: var(--smaller-font-size) !important;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
