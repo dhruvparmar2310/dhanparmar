@@ -11,13 +11,16 @@
 
     .about-data {
         .about-heading {
-            font-size: var(--h3-font-size);
+            font-size: var(--h2-font-size);
             margin-bottom: var(--mb-0-75);
+            font-family: 'BebasNeue';
+            letter-spacing: 2px;
         }
 
         .about-description {
             text-align: justify;
             padding-right: 6rem;
+            font-size: var(--small-font-size);
             margin-bottom: var(--mb-2);
         }
 
@@ -45,6 +48,24 @@
 
                 .about-subtitle {
                     font-size: var(--smaller-font-size);
+                }
+            }
+        }
+    }
+}
+
+body.light {
+    .about {
+        background: var(--white-color);
+
+        .about-container {
+            .about-data {
+                .about-heading {
+                    color: var(--box-color);
+                }
+
+                .about-description {
+                    color: var(--box-color);
                 }
             }
         }
@@ -92,7 +113,7 @@
 @media screen and (max-width: 768px) {
     .about-container {
         margin: 0;
-        
+
         .about-img {
             width: 250px !important;
         }

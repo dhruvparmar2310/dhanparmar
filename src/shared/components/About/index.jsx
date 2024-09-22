@@ -1,50 +1,101 @@
-import React from 'react'
+/* eslint-disable indent */
+import React, { useRef } from 'react'
 import { FaPaperPlane } from 'react-icons/fa'
 import aboutImg from '../../../assets/img/about.jpeg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAward, faBarsProgress, faHeadset } from '@fortawesome/free-solid-svg-icons'
+import { motion, useInView } from 'framer-motion'
 
 const About = () => {
-  return (
+    const ref = useRef(null)
+
+    const isInView = useInView(ref, { once: true })
+    return (
         <>
-            <section className="about section" id='about'>
+            <section className="about section" id='about' ref={ref}>
                 <h2 className='section-title' data-heading='My Intro'>About Me</h2>
 
                 <div className='about-container container grid'>
-                    <img src={aboutImg} alt="" className='about-img' />
+                    <motion.img
+                        src={aboutImg}
+                        alt=""
+                        className='about-img'
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 2, delay: 2 }}
+                    />
 
                     <div className='about-data'>
-                        <h3 className='about-heading'>Hi, I&apos;m Dhruv Parmar, based in India</h3>
-                        <p className="about-description">
-                            Experienced ReactJs Developer with 1.5 Years of hands-on expertise, dedicated to creating seamless and innovative web applications.
-                        </p>
+                        <motion.h3
+                            className='about-heading'
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 1, delay: 2 }}
+                        >Hi, I&apos;m Dhruv Parmar, based in India</motion.h3>
+                        <motion.p
+                            className="about-description"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 1, delay: 3 }}
+                        >
+                            Experienced ReactJs Developer with over 2.5 years of expertise in building high-performance websites, web applications, and software from scratch.
+                        </motion.p>
 
-                        <div className='about-info'>
+                        <motion.p
+                            className="about-description"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 1, delay: 3.5 }}
+                        >
+                            I specialize in creating seamless and efficient digital experiences with a strong focus on performance optimization, modern designs, and SEO best practices. My skill set allows me to craft scalable solutions that not only meet client requirements but also include advanced feature integrations for future expansions.
+                        </motion.p>
+
+                        <motion.p
+                            className="about-description"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 1, delay: 4 }}
+                        >
+                            Whether you&apos;re looking for a cutting-edge web application or a well-optimized, aesthetically appealing website, I ensure functionality, speed, and user satisfaction at every step.
+                        </motion.p>
+
+                        <motion.div
+                            className='about-info'
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 2, delay: 3 }}
+                        >
                             <div className='about-box'>
                                 <FontAwesomeIcon icon={faAward} className='about-icon' />
                                 <h3 className='about-title'>Experience</h3>
-                                <span className="about-subtitle">1.5 Years</span>
+                                <span className="about-subtitle">2.5 Years</span>
                             </div>
                             <div className='about-box'>
                                 <FontAwesomeIcon icon={faBarsProgress} className='about-icon' />
                                 <h3 className='about-title'>Completed</h3>
-                                <span className="about-subtitle">5+ Projects</span>
+                                <span className="about-subtitle">20+ Projects</span>
                             </div>
                             <div className='about-box'>
                                 <FontAwesomeIcon icon={faHeadset} className='about-icon' />
                                 <h3 className='about-title'>Support</h3>
                                 <span className="about-subtitle">Online 24/7</span>
                             </div>
-                        </div>
+                        </motion.div>
 
-                        <a href="#contact" className='button'>
-                            <FaPaperPlane className='button-icon' /> Contact Me
-                        </a>
+                        <motion.a
+                            href="#contact"
+                            className='button'
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0, delay: 3 }}
+                        >
+                            <FaPaperPlane className='button-icon' /> Hire Me
+                        </motion.a>
                     </div>
                 </div>
             </section>
         </>
-  )
+    )
 }
 
 export default About

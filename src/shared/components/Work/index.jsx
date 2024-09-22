@@ -1,7 +1,7 @@
 import { faArrowRight, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
-import img1 from '../../../assets/img/my-portfolio.png'
+import img1 from '../../../assets/img/physiotrends.png'
 import img2 from '../../../assets/img/thephysiobrothers.png'
 import img3 from '../../../assets/img/bhagavad-gita.png'
 import img4 from '../../../assets/img/resturant-app.png'
@@ -36,8 +36,8 @@ const Work = () => {
             <div className='work-container container grid'>
               <div className='work-card'>
                 <img src={img1} alt="" className='work-img' />
-                <h3 className='work-title'>My Portfolio</h3>
-                <span className='work-button' onClick={() => setModal({ open: true, subtitle: 'Featured - Design', title: 'My Portfolio Design', desc: "I've designed my portfolio website from the scratch in ReactJs Technology. You can see the modern Sass design.", date: '10 Jan, 2024', technology: 'ReactJs, Sass, Bootstrap', domain: 'https://dhanparmar.netlify.app', img: img1 })}>Demo <FontAwesomeIcon icon={faArrowRight} className='button-icon' /></span>
+                <h3 className='work-title'>PhysioTrends</h3>
+                <span className='work-button' onClick={() => setModal({ open: true, subtitle: 'Featured - Web,', title: 'Physiotrends', desc: "I've designed this website using latest technology in NextJs with many feature like Physiotherapist Doctor can direct publish there articles on this platform.", date: '10 Jan, 2024', technology: 'NextJs, Sass, Google APIs', domain: 'https://physiotrends.vercel.app', img: img1 })}>Demo <FontAwesomeIcon icon={faArrowRight} className='button-icon' /></span>
               </div>
 
               <div className='work-card'>

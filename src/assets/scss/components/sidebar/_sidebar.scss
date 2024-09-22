@@ -43,18 +43,6 @@
         }
     }
 
-    .btn-share {
-        position: absolute;
-        bottom: 1.8rem;
-        left: 0;
-        right: 0;
-        text-align: center;
-
-        svg {
-            font-size: 1.5rem;
-        }
-    }
-
     .nav-menu {
         position: fixed;
         transform: rotate(-90deg) translateX(-100%);
@@ -69,16 +57,19 @@
                 justify-content: center;
                 align-items: end;
                 flex-direction: row-reverse;
-                margin: -2px auto 0 auto;
+                margin: -2px auto 0 20px;
                 padding: 0;
 
                 .nav-link {
                     float: right;
                     height: 100%;
+                    font-size: var(--smaller-font-size);
                     line-height: 100px;
+                    text-transform: uppercase;
                     padding: 0 1rem;
+                    letter-spacing: 0.6px;
                     color: var(--title-color);
-                    font-weight: var(--font-medium);
+                    font-weight: var(--font-bold);
                     position: relative;
                     cursor: pointer;
 
@@ -108,10 +99,31 @@
     .nav-close {
         font-size: 1.5rem;
         position: absolute;
-        top: 1rem;
-        right: 1.25rem;
+        top: 0.5rem;
+        right: 0.5rem;
         cursor: pointer;
         display: none;
+    }
+}
+
+body.light {
+    .sidebar {
+        background-color: var(--white-color);
+
+        .nav-menu {
+            .menu {
+                .nav-list {
+                    .nav-link {
+                        color: var(--body-color);
+
+                        &.active,
+                        &:hover {
+                            color: var(--skin-color);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -142,7 +154,8 @@
                     padding: 1rem 0 !important;
                     line-height: 1.5rem !important;
 
-                    &.active::after, &:hover::after {
+                    &.active::after,
+                    &:hover::after {
                         bottom: 0 !important;
                     }
                 }
@@ -157,7 +170,7 @@
         .btn-share {
             display: none;
         }
-        
+
     }
 
     .nav-toggle {

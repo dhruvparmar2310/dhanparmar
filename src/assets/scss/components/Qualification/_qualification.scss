@@ -67,6 +67,18 @@
     }
 }
 
+body.light {
+    .qualification {
+        background: var(--white-color);
+
+        .qualification-title,
+        .timeline-title,
+        .timeline-text {
+            color: var(--secondary-color);
+        }
+    }
+}
+
 @media screen and (max-width: 1024px) {
     .qualification-container {
         grid-template-columns: repeat(2, 290px) !important;
@@ -95,7 +107,7 @@
             font-size: var(--normal-font-size) !important;
             margin-bottom: var(--mb-1) !important;
         }
-    
+
         .timeline {
             .timeline-item {
                 margin-bottom: var(--mb-1-5) !important;
@@ -107,7 +119,7 @@
                 .timeline-text {
                     font-size: var(--smaller-font-size) !important;
                 }
-                
+
                 .timeline-date {
                     font-size: var(--smaller-font-size) !important;
                     font-weight: 600;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from './shared/components/Sidebar'
 import SocialMedia from './shared/components/Social-Media'
 import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
@@ -12,8 +12,25 @@ import Skills from './shared/components/Skills'
 import Work from './shared/components/Work'
 import Services from './shared/components/Services'
 import ContactUs from './shared/components/Contact'
+import { motion } from 'framer-motion'
+import Technology from './shared/components/Technology'
 
 function App () {
+  const [text, setText] = useState('')
+  const fullText = "Hi, I'm Dhruv"
+  const typingSpeed = 150 // Speed of typing in ms
+
+  useEffect(() => {
+    let index = 0
+    const timer = setInterval(() => {
+      setText(fullText.slice(0, index))
+      index++
+      if (index > fullText.length) {
+        clearInterval(timer)
+      }
+    }, typingSpeed)
+    return () => clearInterval(timer)
+  }, [])
   return (
     <>
       <Sidebar />
@@ -25,11 +42,44 @@ function App () {
             <img src={logo} alt='' className='home-img' />
 
             <div className='data'>
-              <h1 className='title'>Hi, I&apos;am Dhruv</h1>
-              <h3 className='subtitle'>ReactJs Developer | Front End Developer</h3>
-              <p className='description'>High level of expirenece in Web Design and Development Knownledge, producing quality work.</p>
+              <motion.h1
+                className='title'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+               {text}
+                <motion.span
+                  className='cursor'
+                  initial={{ opacity: 1 }}
+                  animate={{ opacity: [0, 1] }}
+                  transition={{ repeat: Infinity, duration: 0.5 }}
+                >
+                  |
+                </motion.span>
+              </motion.h1>
+              <motion.h3
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               transition={{ duration: 3 }}
+                className='subtitle'
+              >ReactJs Developer | Front End Developer</motion.h3>
+              <motion.p
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               transition={{ duration: 3, delay: 1 }}
+                className='description'
+              >High level of expirenece in Web Design and Development Knownledge, producing quality work.</motion.p>
 
-              <a href="#about" className='button'><FontAwesomeIcon icon={faUser} className='button-icon' /> More About Me</a>
+              <motion.a
+                href="#about"
+                className='button'
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 2, delay: 2 }}
+              >
+                <FontAwesomeIcon icon={faUser} className='button-icon' /> More About Me
+              </motion.a>
             </div>
 
             <div className='my-info'>
@@ -56,6 +106,7 @@ function App () {
 
         <About />
         <Qualification />
+        <Technology />
         <Skills />
         <Work />
         <Services />

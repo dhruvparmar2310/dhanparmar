@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React from 'react'
 import { Form } from 'react-bootstrap'
 import { Controller, useForm } from 'react-hook-form'
@@ -5,17 +6,28 @@ import { FaInstagram, FaPaperPlane, FaWhatsapp } from 'react-icons/fa'
 import { IoMdMail } from 'react-icons/io'
 
 const ContactUs = () => {
-  const {
-    handleSubmit,
-    formState: { errors },
-    control
-  } = useForm({ mode: 'all' })
+    // const navigate = useNavigate()
+    const {
+        handleSubmit,
+        formState: { errors },
+        control
+    } = useForm({ mode: 'all' })
 
-  function onSubmit (data) {
-    console.log('data :>> ', data)
-    // href={`https://wa.me/9586627577?text=Hello%20there,%20I'am%20${watch('sName')}%20and%2C%20I%20wanted%20to%20discuss%20about%20${watch('sSubject')}%20that,%20${watch('sMessage')}`}
-  }
-  return (
+    function onSubmit (data) {
+        // navigate(`https://wa.me/9586627577?text=Hello%20there,%20I'am%20${watch('sName')}%20and%2C%20I%20wanted%20to%20discuss%20about%20${watch('sSubject')}%20that,%20${watch('sMessage')}`)
+        const name = data?.sName
+        const subject = data?.sSubject
+        const message = data?.sMessage
+
+        // Construct the WhatsApp message with form data
+        const whatsappMessage = `Hello there, I'm ${name}, and I wanted to discuss about ${subject}. Here is my message: ${message}`
+
+        // Redirect to WhatsApp with the constructed message
+        const whatsappUrl = `https://wa.me/9586627577?text=${encodeURIComponent(whatsappMessage)}`
+        window.open(whatsappUrl, '_blank')
+    }
+
+    return (
         <>
             <section className='contact section' id='contact'>
                 <h2 data-heading='Get in Touch' className='section-title'>Let&apos;s discuss your Project</h2>
@@ -127,7 +139,7 @@ const ContactUs = () => {
                 </div>
             </section>
         </>
-  )
+    )
 }
 
 export default ContactUs

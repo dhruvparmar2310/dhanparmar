@@ -54,7 +54,7 @@
     align-items: center;
     column-gap: 0.75rem;
     margin-bottom: 2rem;
-    
+
     .work-item {
         transition: all 0.3s ease-in-out;
         cursor: pointer;
@@ -160,6 +160,44 @@
     }
 }
 
+body.light {
+    .work {
+        background: var(--white-color);
+
+        .work-filters {
+            .work-item {
+                color: var(--skin-color);
+            }
+
+            .active-work {
+                color: var(--white-color);
+            }
+        }
+
+        .work-card {
+            background: var(--white-color);
+            box-shadow: 0 0 30px rgb(206, 206, 206);
+            transition: all 0.5s linear;
+
+            .work-title {
+                color: var(--secondary-color);
+            }
+        }
+
+        .portfolio-popup {
+            .popup-inner {
+                color: var(--secondary-color);
+                font-weight: var(--font-bold);
+                background: var(--white-color);
+
+                .details-title {
+                    color: var(--skin-color);
+                }
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 1216px) {
     .work-container {
         grid-template-columns: repeat(2, 330px);
@@ -220,14 +258,14 @@
     }
 }
 
-@media screen and (max-width: 576px) { 
+@media screen and (max-width: 576px) {
     .work-container {
         grid-template-columns: 320px;
         gap: 1rem;
     }
 }
 
-@media screen and (max-width: 350px) { 
+@media screen and (max-width: 350px) {
     .work-filters {
         column-gap: 0.25rem !important;
         margin-bottom: var(--mb-1);
@@ -250,6 +288,7 @@
 
     .popup-inner {
         padding-bottom: 5px !important;
+
         .popup-content {
             grid-template-columns: 270px !important;
             overflow: hidden;
@@ -259,6 +298,7 @@
                     .details-title {
                         font-size: var(--h2-font-size) !important;
                     }
+
                     .details-description {
                         word-wrap: break-word !important;
                         font-size: var(--smaller-font-size) !important;

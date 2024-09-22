@@ -21,7 +21,8 @@
                 margin-bottom: var(--mb-0-25);
             }
 
-            .card-title, .card-data {
+            .card-title,
+            .card-data {
                 font-size: var(--small-font-size);
             }
 
@@ -66,9 +67,35 @@
                 color: #4d4d4d;
             }
         }
-        
+
         .invalid-feedback {
             display: block;
+        }
+    }
+}
+
+body.light {
+    .contact {
+        background: var(--white-color);
+
+        .contact-card {
+            background: var(--white-color);
+            box-shadow: 0 0 30px rgb(206, 206, 206);
+
+            .card-title {
+                color: var(--skin-color);
+            }
+        }
+
+        .contact-content {
+            label {
+                color: var(--skin-color);
+            }
+
+            input,
+            textarea {
+                background: var(--white-color);
+            }
         }
     }
 }
@@ -82,7 +109,7 @@
 }
 
 
-@media screen and (max-width: 576px) { 
+@media screen and (max-width: 576px) {
     .contact-container {
         grid-template-columns: 300px;
     }
