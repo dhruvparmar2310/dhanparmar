@@ -135,9 +135,11 @@ body.light {
         background-color: var(--box-color);
         width: 900px;
         height: auto;
+        max-height: 500px;
         border-radius: 0.5rem;
         position: relative;
         overflow: hidden;
+        overflow-y: auto;
 
         .popup-content {
             display: grid;
@@ -298,7 +300,7 @@ body.light {
 
     .popup-inner {
         width: 420px !important;
-        padding: 2.8rem 1.5rem 2.5rem !important;
+        padding: 2.8rem 1rem 2.5rem !important;
 
         .popup-content {
             grid-template-columns: 1fr !important;
@@ -306,6 +308,14 @@ body.light {
 
             .popup-close {
                 top: 0.5rem !important;
+            }
+
+            .thumbnail {
+                padding: 0 !important;
+            }
+
+            .popup-info {
+                padding: 1rem !important;
             }
 
             .details-title {
