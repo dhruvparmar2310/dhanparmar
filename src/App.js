@@ -39,7 +39,7 @@ function App () {
           <div className='home-container container grid'>
             <SocialMedia />
 
-            <img src={logo} alt='' className='home-img' />
+            <img src={logo} alt='' loading='lazy' className='home-img' />
 
             <div className='data'>
               <motion.h1

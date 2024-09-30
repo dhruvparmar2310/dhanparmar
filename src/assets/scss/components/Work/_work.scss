@@ -6,43 +6,90 @@
 
     .work-card {
         background-color: var(--box-color);
-        padding: 1.25rem;
         border-radius: 0.5rem;
+        overflow: hidden;
+        height: 300px;
+        min-height: 300px;
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+            .work-card-body {
+                display: grid;
+                top: 0;
+            }
+        }
 
         .portfolio-item-details {
             display: none;
         }
 
-        .work-img {
+        .work-card-header {
             width: 100%;
-            height: 140px;
-            min-height: 140px;
-            filter: brightness(85%) saturate(100%);
+            height: 100%;
+            padding: 1rem;
+
+            .work-img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                filter: brightness(100%) saturate(100%);
+                // border-radius: 0.5rem;
+                margin-bottom: var(--mb-1);
+            }
+        }
+
+        .work-card-body {
+            display: none;
+            place-items: center;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            padding: 1.25rem;
             border-radius: 0.5rem;
-            margin-bottom: var(--mb-1);
-        }
+            transition: all 0.5s ease-in-out;
+            background: rgba(0, 0, 0, 0.711);
+            border: 2px dotted var(--white-color);
 
-        .work-title {
-            font-size: var(--normal-font-size);
-            font-weight: var(--font-medium);
-            margin-bottom: var(--mb-0-5);
-        }
-
-        .work-button {
-            color: var(--skin-color);
-            font-size: var(--small-font-size);
-            display: flex;
-            align-items: center;
-            column-gap: 0.25rem;
-            cursor: pointer;
-
-            .button-icon {
-                font-size: 1rem;
-                transition: all 0.3s;
+            .work-title {
+                font-size: var(--h2-font-size);
+                font-weight: var(--font-bold);
+                margin-bottom: var(--mb-0-5);
+                text-wrap: wrap;
+                color: var(--white-color);
             }
 
-            &:hover .button-icon {
-                transform: translateX(0.25rem);
+            .work-button {
+                color: var(--white-color);
+                font-size: var(--small-font-size);
+                display: flex;
+                align-items: center;
+                column-gap: 0.25rem;
+                cursor: pointer;
+                padding: 10px 30px;
+                border-radius: 99px;
+                background: black;
+                letter-spacing: 1px;
+                transition: all 0.3s linear;
+                box-shadow: 0 0 30px rgba(255, 255, 255, 0.342);
+
+                &:hover {
+                    box-shadow: 0 0 30px rgba(255, 255, 255, 0.401),
+                        0 0 35px rgba(255, 255, 255, 0.342);
+                }
+            }
+        }
+    }
+}
+
+body.light {
+    .work-container {
+        .work-card {
+            .work-card-body {
+                .work-title {
+                    color: var(--white-color);
+                }
             }
         }
     }
@@ -87,15 +134,16 @@
     .popup-inner {
         background-color: var(--box-color);
         width: 900px;
+        height: auto;
         border-radius: 0.5rem;
-        padding: 2.5rem;
         position: relative;
+        overflow: hidden;
 
         .popup-content {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             align-items: center;
-            column-gap: 3rem;
+            column-gap: 0rem;
 
             .popup-close {
                 position: absolute;
@@ -107,12 +155,21 @@
             }
 
             .thumbnail {
+                width: 100%;
+                height: 100%;
+                padding: 1.5rem;
+
                 .popup-img {
-                    border-radius: 0.5rem;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    filter: brightness(100%) saturate(100%);
                 }
             }
 
             .popup-info {
+                padding: 3rem 2rem;
+
                 .popup-subtitle {
                     font-size: var(--smaller-font-size);
                     margin-bottom: var(--mb-0-25);

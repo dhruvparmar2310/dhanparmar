@@ -19,6 +19,7 @@ const About = () => {
                     <motion.img
                         src={aboutImg}
                         alt=""
+                        loading='lazy'
                         className='about-img'
                         initial={{ opacity: 0, x: -50 }}
                         animate={isInView ? { opacity: 1, x: 0 } : {}}

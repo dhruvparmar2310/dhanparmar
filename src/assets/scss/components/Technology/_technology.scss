@@ -23,7 +23,7 @@
             span {
                 width: 100px;
                 height: 100px;
-                background: var(--white-color);
+                background: var(--box-color);
                 border-radius: 10px;
                 padding: 10px;
                 transition: all 0.5s linear;
@@ -49,6 +49,7 @@ body.light {
 
         .inner-content {
             span {
+                background: var(--white-color);
                 box-shadow: 0 0 30px rgb(206, 206, 206);
             }
         }
