@@ -3,6 +3,8 @@
     gap: 1.8rem;
     justify-content: center;
     padding-top: 1rem;
+    position: relative;
+    z-index: 0;
 
     .work-card {
         background-color: var(--box-color);

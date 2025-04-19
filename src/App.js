@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import Sidebar from './shared/components/Sidebar'
-import SocialMedia from './shared/components/Social-Media'
+import React, { useEffect, useRef, useState } from 'react'
 import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
 import { IoLogoInstagram, IoMdMail } from 'react-icons/io'
 import logo from './assets/img/home-img-3.jpeg'
@@ -12,81 +10,181 @@ import Skills from './shared/components/Skills'
 import Work from './shared/components/Work'
 import Services from './shared/components/Services'
 import ContactUs from './shared/components/Contact'
-import { motion } from 'framer-motion'
 import Technology from './shared/components/Technology'
+import Header from './shared/components/Header'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+const rotatingTexts = [
+  // { text: 'React.js Developer', bg: '#ff7f7f' }, // Light red
+  { text: 'Front-End Specialist', bg: '#ff7f7f' }, // Light green
+  { text: 'Performance Optimization', bg: '#1eff0b' }, // Dodger blue
+  { text: 'SEO Friendly', bg: '#9370db' }, // Medium purple
+  { text: 'Responsive Design', bg: '#ffd700' } // Golden yellow
+]
+
+gsap.registerPlugin(ScrollTrigger)
 
 function App () {
   const [text, setText] = useState('')
   const fullText = "Hi, I'm Dhruv"
-  const typingSpeed = 150 // Speed of typing in ms
+  const typingSpeed = 100 // Speed of typing in ms
 
+  const titleRef = useRef(null)
+  const subtitleRef = useRef(null)
+  const descRef = useRef(null)
+  const btnRef = useRef(null)
+  const rotatingRef = useRef(null)
+  const rotateTextIndex = useRef(0)
+
+  // useEffect(() => {
+  //   let index = 0
+  //   const timer = setInterval(() => {
+  //     setText(fullText.slice(0, index + 1))
+  //     index++
+  //     if (index === fullText.length) {
+  //       clearInterval(timer)
+  //     }
+  //   }, typingSpeed)
+
+  //   if (typeof window !== 'undefined') {
+  //     // Use require to ensure proper import
+  //     const WOW = require('wow.js/dist/wow')
+  //     const wow = new WOW({
+  //       boxClass: 'wow', // Class for animation trigger
+  //       animateClass: 'animate__animated', // Animate.css class prefix
+  //       offset: 0, // Distance to start the animation
+  //       mobile: true, // Trigger animations on mobile
+  //       live: true // Act on asynchronously loaded content
+  //     })
+  //     wow.init()
+  //   }
+  //   return () => clearInterval(timer)
+  // }, [])
   useEffect(() => {
+    // Apply global scroll animation
+    ScrollTrigger.defaults({
+      toggleActions: 'play none none none',
+      ease: 'power1.out'
+    })
+
+    // Optional: Smooth fade-in on scroll
+    gsap.utils.toArray('.fade-up').forEach((el) => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 90%',
+            end: 'bottom 10%',
+            scrub: false
+          }
+        }
+      )
+    })
+
     let index = 0
     const timer = setInterval(() => {
-      setText(fullText.slice(0, index))
+      setText(fullText.slice(0, index + 1))
       index++
-      if (index > fullText.length) {
+      if (index === fullText.length) {
         clearInterval(timer)
       }
     }, typingSpeed)
-    return () => clearInterval(timer)
+
+    // GSAP Animation
+    const tl = gsap.timeline({ defaults: { ease: 'power2.out' } })
+    tl.fromTo(titleRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1 })
+      .fromTo(subtitleRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1 }, '-=0.5')
+      .fromTo(descRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1 }, '-=0.5')
+      .fromTo(btnRef.current, { opacity: 0 }, { opacity: 1, duration: 1 })
+
+    // Animate my-info content
+    tl.fromTo('.my-info .info-item',
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 1, stagger: 0.3 }, // Adds stagger effect to each info item
+      '-=0.5' // Delay the my-info animation to start after the button animation
+    )
+
+    const el = rotatingRef.current
+
+    // Set initial text and background
+    el.innerText = rotatingTexts[0].text
+    el.style.backgroundColor = rotatingTexts[0].bg
+
+    gsap.set(el, {
+      transformPerspective: 1000,
+      transformStyle: 'preserve-3d'
+    })
+    const updateText = () => {
+      // Animate out
+      gsap.to(el, {
+        rotationX: 90,
+        autoAlpha: 0,
+        filter: 'blur(3px)',
+        duration: 0.6,
+        ease: 'power2.in',
+        onComplete: () => {
+          rotateTextIndex.current = (rotateTextIndex.current + 1) % rotatingTexts.length
+          el.innerText = rotatingTexts[rotateTextIndex.current].text
+          el.style.backgroundColor = rotatingTexts[rotateTextIndex.current].bg
+
+          // Reset rotation for next flip
+          gsap.set(el, { rotationX: -90 })
+
+          // Animate in
+          gsap.to(el, {
+            rotationX: 0,
+            autoAlpha: 1,
+            filter: 'blur(0px)',
+            duration: 0.6,
+            ease: 'power2.out'
+          })
+        }
+      })
+    }
+
+    const interval = setInterval(updateText, 2500) // every 2s
+    return () => {
+      clearInterval(timer)
+      clearInterval(interval)
+    }
   }, [])
+
   return (
     <>
-      <Sidebar />
+      <Header />
       <main className='main'>
         <section className='home' id='home'>
           <div className='home-container container grid'>
-            <SocialMedia />
 
             <img src={logo} alt='' loading='lazy' className='home-img' />
 
             <div className='data'>
-              <motion.h1
-                className='title'
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-               {text}
-                <motion.span
-                  className='cursor'
-                  initial={{ opacity: 1 }}
-                  animate={{ opacity: [0, 1] }}
-                  transition={{ repeat: Infinity, duration: 0.5 }}
-                >
-                  |
-                </motion.span>
-              </motion.h1>
-              <motion.h3
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
-               transition={{ duration: 3 }}
-                className='subtitle'
-              >ReactJs Developer | Front End Developer</motion.h3>
-              <motion.p
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
-               transition={{ duration: 3, delay: 1 }}
-                className='description'
-              >High level of expirenece in Web Design and Development Knownledge, producing quality work.</motion.p>
-
-              <motion.a
-                href="#about"
-                className='button'
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 2, delay: 2 }}
-              >
+              <h1 className='title fade-up' ref={titleRef}>
+                {text}
+                <span className='custom-cursor'></span>
+              </h1>
+              <h3 className='subtitle' ref={subtitleRef}>
+              React.js Developer | <span className="rotating-text" ref={rotatingRef}>
+        </span>
+              </h3>
+              <p className='description' ref={descRef}>
+              Crafting seamless and efficient web experiences with modern technologies.
+              </p>
+              <a href="#about" className='button' ref={btnRef}>
                 <FontAwesomeIcon icon={faUser} className='button-icon' /> More About Me
-              </motion.a>
+              </a>
             </div>
 
+            {/* Your my-info section remains unchanged */}
             <div className='my-info'>
               <div className='info-item'>
                 <FaWhatsapp className='info-icon' />
-
-                <div className=''>
+                <div>
                   <h3 className='info-title'>Whatsapp</h3>
                   <span className='info-subtitle' onClick={() => window.open('https://wa.me/9586627577')}>958-662-7577</span>
                 </div>
@@ -94,8 +192,7 @@ function App () {
 
               <div className='info-item'>
                 <IoMdMail className='info-icon' />
-
-                <div className=''>
+                <div>
                   <h3 className='info-title'>Email</h3>
                   <span className='info-subtitle' onClick={() => { window.location.href = 'mailto:dhanparmar23@gmail.com' }}>dhanparmar23@gmail.com</span>
                 </div>

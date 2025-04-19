@@ -8,7 +8,7 @@ const Services = () => {
   const [modal, setModal] = useState({ open: false })
   return (
     <>
-      <section className="services container section" id='services'>
+      <section className="services section" id='services'>
         <h2 data-heading='Services' className='section-title'>What I Offer</h2>
 
         <div className='services-container container grid'>

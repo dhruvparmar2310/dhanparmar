@@ -1,11 +1,11 @@
 .services {
-    margin-left: 0;
-
     .services-container {
         display: grid;
         grid-template-columns: repeat(3, 250px);
         justify-content: center;
         column-gap: 1.8rem;
+        z-index: 0;
+        position: relative;
 
         .service-content {
             position: relative;

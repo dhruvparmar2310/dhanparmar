@@ -1,101 +1,142 @@
 /* eslint-disable indent */
-import React, { useRef } from 'react'
+import React, { useLayoutEffect, useRef } from 'react'
 import { FaPaperPlane } from 'react-icons/fa'
-import aboutImg from '../../../assets/img/about.jpeg'
+import aboutImg from '../../../assets/img/profile-1.jpeg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAward, faBarsProgress, faHeadset } from '@fortawesome/free-solid-svg-icons'
-import { motion, useInView } from 'framer-motion'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const About = () => {
-    const ref = useRef(null)
+    const sectionRef = useRef(null)
+    const imgRef = useRef(null)
+    const headingRef = useRef(null)
+    const descRefs = useRef([])
+    const infoBoxRefs = useRef([])
+    const buttonRef = useRef(null)
 
-    const isInView = useInView(ref, { once: true })
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.from(imgRef.current, {
+                scrollTrigger: {
+                    trigger: imgRef.current,
+                    start: 'center bottom' // Trigger when image is halfway into view
+                },
+                x: -50,
+                opacity: 0,
+                duration: 1.8,
+                ease: 'power2.out'
+            })
+
+            gsap.from(headingRef.current, {
+                scrollTrigger: {
+                    trigger: headingRef.current,
+                    start: 'top 85%'
+                },
+                y: 40,
+                opacity: 0,
+                duration: 1.5,
+                ease: 'power2.out'
+            })
+
+            gsap.from(descRefs.current, {
+                scrollTrigger: {
+                    trigger: headingRef.current,
+                    start: 'top 80%'
+                },
+                y: 40,
+                opacity: 0,
+                duration: 1.5,
+                stagger: 0.3,
+                ease: 'power2.out'
+            })
+
+            infoBoxRefs.current.forEach((box, i) => {
+                gsap.from(box, {
+                    scrollTrigger: {
+                        trigger: box,
+                        start: 'top 80%'
+                    },
+                    y: 40,
+                    opacity: 0,
+                    duration: 1.5,
+                    ease: 'power2.out',
+                    delay: i * 0.2 // reveal one by one smoothly
+                })
+            })
+
+            gsap.from(buttonRef.current, {
+                scrollTrigger: {
+                    trigger: headingRef.current,
+                    start: 'top 70%'
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1.5,
+                ease: 'power2.out',
+                delay: 0.5
+            })
+        }, sectionRef)
+
+        return () => ctx.revert()
+    }, [])
+
     return (
-        <>
-            <section className="about section" id='about' ref={ref}>
-                <h2 className='section-title' data-heading='My Intro'>About Me</h2>
+        <section className="about section" id="about" ref={sectionRef}>
+            <h2 className="section-title" data-heading="About">My Intro</h2>
 
-                <div className='about-container container grid'>
-                    <motion.img
+            <div className="about-container container grid">
+                <div className='img-content'>
+                    <img
                         src={aboutImg}
-                        alt=""
-                        loading='lazy'
-                        className='about-img'
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 2, delay: 2 }}
+                        alt="About Dhruv"
+                        loading="lazy"
+                        className="about-img"
+                        ref={imgRef}
                     />
-
-                    <div className='about-data'>
-                        <motion.h3
-                            className='about-heading'
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 1, delay: 2 }}
-                        >Hi, I&apos;m Dhruv Parmar, based in India</motion.h3>
-                        <motion.p
-                            className="about-description"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 1, delay: 3 }}
-                        >
-                            Experienced ReactJs Developer with over 2.5 years of expertise in building high-performance websites, web applications, and software from scratch.
-                        </motion.p>
-
-                        <motion.p
-                            className="about-description"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 1, delay: 3.5 }}
-                        >
-                            I specialize in creating seamless and efficient digital experiences with a strong focus on performance optimization, modern designs, and SEO best practices. My skill set allows me to craft scalable solutions that not only meet client requirements but also include advanced feature integrations for future expansions.
-                        </motion.p>
-
-                        <motion.p
-                            className="about-description"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 1, delay: 4 }}
-                        >
-                            Whether you&apos;re looking for a cutting-edge web application or a well-optimized, aesthetically appealing website, I ensure functionality, speed, and user satisfaction at every step.
-                        </motion.p>
-
-                        <motion.div
-                            className='about-info'
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 2, delay: 3 }}
-                        >
-                            <div className='about-box'>
-                                <FontAwesomeIcon icon={faAward} className='about-icon' />
-                                <h3 className='about-title'>Experience</h3>
-                                <span className="about-subtitle">2.5 Years</span>
-                            </div>
-                            <div className='about-box'>
-                                <FontAwesomeIcon icon={faBarsProgress} className='about-icon' />
-                                <h3 className='about-title'>Completed</h3>
-                                <span className="about-subtitle">20+ Projects</span>
-                            </div>
-                            <div className='about-box'>
-                                <FontAwesomeIcon icon={faHeadset} className='about-icon' />
-                                <h3 className='about-title'>Support</h3>
-                                <span className="about-subtitle">Online 24/7</span>
-                            </div>
-                        </motion.div>
-
-                        <motion.a
-                            href="#contact"
-                            className='button'
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0, delay: 3 }}
-                        >
-                            <FaPaperPlane className='button-icon' /> Hire Me
-                        </motion.a>
-                    </div>
                 </div>
-            </section>
-        </>
+
+                <div className="about-data">
+                    <h3 className="about-heading" ref={headingRef}>
+                        Hi, I&apos;m Dhruv Parmar, based in India
+                    </h3>
+
+                    {[
+                        'I craft high-performance, scalable, and modern web applications using React.js, Next.js, Redux, GraphQL, and React Query. My expertise lies in transforming ideas into seamless digital experiences that are fast, optimized, and SEO-friendly.',
+                        "Whether it's building from scratch or scaling existing systems, I prioritize clean code, reusable components, and pixel-perfect UIs with a strong focus on user-centric design and performance optimization.",
+                        'I focus on building accessible, responsive, and maintainable web interfaces that not only meet user expectations but also scale effortlessly with growing product demands.'
+                    ].map((text, i) => (
+                        <p
+                            key={i}
+                            className="about-description"
+                            ref={(el) => (descRefs.current[i] = el)}
+                        >
+                            {text}
+                        </p>
+                    ))}
+
+                    <div className="about-info">
+                        {[
+                            { icon: faAward, title: 'Experience', subtitle: 'React.js & Front-End' },
+                            { icon: faBarsProgress, title: 'Completed', subtitle: '20+ Projects' },
+                            { icon: faHeadset, title: 'Support', subtitle: 'Online 24/7' }
+                        ].map((box, i) => (
+                            <div className="about-box" key={i} ref={(el) => (infoBoxRefs.current[i] = el)}>
+                                <FontAwesomeIcon icon={box.icon} className="about-icon" />
+                                <h3 className="about-title">{box.title}</h3>
+                                <span className="about-subtitle">{box.subtitle}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <a href="#contact" className="button" ref={buttonRef}>
+                        <FaPaperPlane className="button-icon" /> Let&apos;s Connect
+                    </a>
+                </div>
+            </div>
+        </section>
     )
 }
 

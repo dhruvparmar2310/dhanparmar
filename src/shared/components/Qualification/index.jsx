@@ -1,101 +1,91 @@
-import { faAward, faCalendarDays, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
+import { faAward, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useRef } from 'react'
 import { MdOutlineFileDownload } from 'react-icons/md'
+import React, { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+import { Container, Row, Col, Button } from 'react-bootstrap'
 import resume from '../../../assets/data/Dhruv_Parmar.pdf'
-import { motion, useInView } from 'framer-motion'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Qualification = () => {
-  const ref = useRef(null)
+  const cardRefs = useRef([])
 
-  const isInView = useInView(ref, { once: true })
+  useEffect(() => {
+    cardRefs.current.forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          delay: index * 0.2,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'center bottom',
+            toggleActions: 'play none none none'
+          }
+        }
+      )
+    })
+  }, [])
+
   return (
-    <>
-      <section className="qualification section" id='qualification' ref={ref}>
-        <h2 className='section-title' data-heading='My Journey'>Qualification</h2>
-
-        <div className='qualification-container container grid'>
-          <div className="education">
-            <motion.h3
-              className="qualification-title"
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 1, delay: 2 }}
-            ><FontAwesomeIcon icon={faGraduationCap} className='' /> Education</motion.h3>
-
-            <div className="timeline">
-              <div className="timeline-item">
-                <div className="circle-dot"></div>
-                <h3 className="timeline-title">K.G. Dholakiya School, Rajkot</h3>
-                <p className="timeline-text">SSC</p>
-                <span className='timeline-date'>
-                  <FontAwesomeIcon icon={faCalendarDays} /> 2016 - 2017
-                </span>
-              </div>
-            </div>
-
-            <div className="timeline">
-              <div className="timeline-item">
-                <div className="circle-dot"></div>
-                <h3 className="timeline-title">Shree P.V. Modi School, Rajkot</h3>
-                <p className="timeline-text">HSC</p>
-                <span className='timeline-date'>
-                  <FontAwesomeIcon icon={faCalendarDays} /> 2017 - 2019
-                </span>
-              </div>
-            </div>
-
-            <div className="timeline">
-              <div className="timeline-item">
-                <div className="circle-dot"></div>
-                <h3 className="timeline-title">Darshan University, Rajkot</h3>
-                <p className="timeline-text">Bachelor&apos;s of Engineering (B.E.)</p>
-                <span className='timeline-date'>
-                  <FontAwesomeIcon icon={faCalendarDays} /> 2019 - 2023
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="experience">
-            <motion.h3
-              className="qualification-title"
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 1, delay: 2 }}
-            ><FontAwesomeIcon icon={faAward} /> Experience</motion.h3>
-
-            <div className="timeline">
-              <div className="timeline-item">
-                <div className="circle-dot"></div>
-                <h3 className="timeline-title">Yudiz Solutions Ltd., Ahmedabad</h3>
-                <p className="timeline-text">Jr. Web Developer (ReactJs Developer)</p>
-                <span className='timeline-date'>
-                  <FontAwesomeIcon icon={faCalendarDays} /> 2023 - Present
-                </span>
-              </div>
-            </div>
-            <div className="timeline">
-              <div className="timeline-item">
-                <div className="circle-dot"></div>
-                <h3 className="timeline-title"></h3>
-                <p className="timeline-text">Internship Trainee</p>
-                <span className='timeline-date'>
-                  <FontAwesomeIcon icon={faCalendarDays} /> 2022 - 2023
-                </span>
-              </div>
-            </div>
-          </div>
-
+    <section id="qualification" className="qualification-section">
+      <Container>
+        <div className="text-center mb-5">
+          <span className="subheading">My Journey</span>
+          <h2 className="section-title">Qualification</h2>
         </div>
 
-        <div className='text-center'>
-          <a href={resume} download='Dhruv_Parmar' rel='moreferrer' className='button'>
-            <MdOutlineFileDownload className='button-icon' /> Resume
+        <Row className="g-4">
+          <Col md={6}>
+            <div
+              className="glass-card"
+              ref={(el) => (cardRefs.current[0] = el)}
+            >
+              <h3 className="card-title">
+                <FontAwesomeIcon icon={faGraduationCap} className="icon" />
+                Education
+              </h3>
+              <p className="card-heading">Darshan University, Rajkot</p>
+              <p className="card-text">Bachelor’s of Engineering (B.E.)</p>
+              <p className="card-date">2019 - 2023</p>
+            </div>
+          </Col>
+
+          <Col md={6}>
+            <div
+              className="glass-card"
+              ref={(el) => (cardRefs.current[1] = el)}
+            >
+              <h3 className="card-title">
+                <FontAwesomeIcon icon={faAward} className="icon" />
+                Experience
+              </h3>
+              <p className="card-heading">Yudiz Solutions Ltd., Ahmedabad</p>
+              <p className="card-text">Jr. Web Developer (ReactJs Developer)</p>
+              <p className="card-date">2023 - Present</p>
+              <hr />
+              <p className="card-text">Internship Trainee</p>
+              <p className="card-date">2022 - 2023</p>
+            </div>
+          </Col>
+        </Row>
+
+        <div className="text-center mt-5">
+          <a href={resume} download="Dhruv_Parmar" rel="noreferrer">
+            <Button variant="primary" className="resume-btn">
+              <MdOutlineFileDownload className="me-2" />
+              Download Resume
+            </Button>
           </a>
         </div>
-      </section>
-    </>
+      </Container>
+    </section>
   )
 }
 

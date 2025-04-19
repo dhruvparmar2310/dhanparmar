@@ -5,6 +5,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import 'bootstrap/scss/bootstrap.scss'
 import './assets/scss/main.scss'
+import 'animate.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(

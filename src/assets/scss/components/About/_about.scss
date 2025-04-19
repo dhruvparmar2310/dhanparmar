@@ -1,33 +1,39 @@
 .about-container {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 4rem;
-    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    column-gap: 1rem;
+    // align-items: center;
 
-    .about-img {
-        width: 480px;
-        border-radius: 0.75rem;
-        justify-self: center;
+    .img-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        .about-img {
+            width: 450px;
+            border-radius: 0.75rem;
+            justify-self: center;
+        }
     }
 
     .about-data {
         .about-heading {
-            font-size: var(--h2-font-size);
+            font-size: var(--h1-font-size);
             margin-bottom: var(--mb-0-75);
             font-family: 'BebasNeue';
             letter-spacing: 2px;
+            font-weight: 500;
         }
 
         .about-description {
             text-align: justify;
-            padding-right: 6rem;
-            font-size: var(--small-font-size);
+            font-size: 16px;
             margin-bottom: var(--mb-2);
         }
 
         .about-info {
             display: grid;
-            grid-template-columns: repeat(3, 140px);
-            column-gap: 0.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.75rem;
             margin-bottom: var(--mb-3);
 
             .about-box {

@@ -7,36 +7,42 @@
 
         .inner-content {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            margin: 10px 0;
+            row-gap: 10px;
+            // margin: 10px 0;
             flex-wrap: wrap;
 
-            &:first-child {
-                width: calc(100% - 45%);
-            }
+            .tech-card {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+                margin: 0 5px;
+                background: rgba(94, 94, 94, 0.794);
+                border: 3px solid gray;
+                padding: 5px 10px;
+                border-radius: 99px;
 
-            &:nth-child(2) {
-                width: calc(100% - 64%);
-            }
+                .tech-icon {
+                    width: 30px;
+                    height: 30px;
+                    // padding: 3px;
+                    // background: rgba(70, 70, 70, 0.53);
+                    // border: 3px solid gray;
+                    // border-radius: 12px;
 
-            span {
-                width: 100px;
-                height: 100px;
-                background: var(--box-color);
-                border-radius: 10px;
-                padding: 10px;
-                transition: all 0.5s linear;
-
-                &:hover {
-                    box-shadow: 0 0 30px var(--skin-color);
+                    img {
+                        width: 100%;
+                        object-fit: contain;
+                        aspect-ratio: 1/1;
+                    }
                 }
-            }
 
-            img {
-                width: 100px;
-                object-fit: contain;
-                aspect-ratio: 1/1;
+                .tech-name {
+                    padding: 0 5px;
+                    margin: 0;
+                }
             }
         }
     }

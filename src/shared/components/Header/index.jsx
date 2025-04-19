@@ -1,10 +1,33 @@
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faMoon, faSun, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
+import { Button } from 'react-bootstrap'
+import logo from '../../../assets/img/no-bg-logo.png'
 
-const Sidebar = () => {
+const Header = () => {
   const [currentSection, setCurrentSection] = useState('home')
   const [show, setShow] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [mode, setMode] = useState(() => {
+    return localStorage.getItem('theme-mode') === 'true'
+  })
+
+  const handleModeClick = () => {
+    console.log('hi')
+    setMode(prevMode => !prevMode)
+  }
+
+  useEffect(() => {
+    if (mode) {
+      document.body.classList.add('light')
+      document.body.classList.remove('dark')
+    } else {
+      document.body.classList.add('dark')
+      document.body.classList.remove('light')
+    }
+
+    localStorage.setItem('theme-mode', mode)
+  }, [mode])
 
   const handleClick = (e, data) => {
     e.preventDefault()
@@ -46,6 +69,13 @@ const Sidebar = () => {
       } else {
         setCurrentSection('contact')
       }
+
+      // Add this to track scroll position
+      if (scrollPosition >= 30) {
+        setScrolled(true)
+      } else {
+        setScrolled(false)
+      }
     }
 
     window?.addEventListener('scroll', handleScroll)
@@ -58,18 +88,20 @@ const Sidebar = () => {
       <div className='nav-toggle' id='nav-toggle' onClick={() => setShow(!show)}>
         <FontAwesomeIcon icon={faBars} />
       </div>
-      <aside className={`sidebar ${show ? 'show-sidebar' : ''}`} id='sidebar'>
+      <header className={`header-content ${show ? 'show-header' : ''} ${scrolled ? 'scrolled' : ''}`} id='header'>
         <nav className='nav'>
           <div className='nav-logo'>
-            <a href='/' className='logo-text'>DP</a>
+            <a href='/' className='logo-text'>
+              <img src={logo} alt='Dhruv Parmar' loading='lazy' />
+            </a>
           </div>
 
           <div className='nav-menu'>
             <div className='menu'>
               <ul className='nav-list'>
-                <li className='nav-item'>
+                {/* <li className='nav-item'>
                   <span onClick={(e) => handleClick(e, 'home')} className={`nav-link ${currentSection === 'home' && 'active'}`}>Home</span>
-                </li>
+                </li> */}
                 <li className='nav-item'>
                   <span className={`nav-link ${currentSection === 'about' && 'active'}`} onClick={(e) => handleClick(e, 'about')}>About</span>
                 </li>
@@ -89,13 +121,19 @@ const Sidebar = () => {
             </div>
           </div>
 
+          <div className='theme-mode'>
+            <Button type='button' variant='primary' className='modeBtn' onClick={handleModeClick}>
+              {mode ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}
+            </Button>
+          </div>
+
           <div className='nav-close' id='nav-close' onClick={() => setShow(!show)}>
             <FontAwesomeIcon icon={faTimes} />
           </div>
         </nav>
-      </aside>
+      </header>
     </>
   )
 }
 
-export default Sidebar
+export default Header

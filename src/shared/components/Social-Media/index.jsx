@@ -1,32 +1,8 @@
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useEffect, useState } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import React from 'react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { IoLogoInstagram } from 'react-icons/io5'
 
 const SocialMedia = () => {
-  const [mode, setMode] = useState(() => {
-    return localStorage.getItem('theme-mode') === 'true'
-  })
-
-  console.log('mode :>> ', mode)
-
-  const handleClick = () => {
-    setMode(prevMode => !prevMode)
-  }
-
-  useEffect(() => {
-    if (mode) {
-      document.body.classList.add('light')
-      document.body.classList.remove('dark')
-    } else {
-      document.body.classList.add('dark')
-      document.body.classList.remove('light')
-    }
-
-    localStorage.setItem('theme-mode', mode)
-  }, [mode])
   return (
     <>
       <div className='top-header'>
@@ -44,13 +20,13 @@ const SocialMedia = () => {
             </a>
           </div>
         </div>
-        <div className='theme-mode'>
+        {/* <div className='theme-mode'>
           <Form>
             <Button type='button' variant='primary' className='modeBtn' onClick={() => handleClick()}>
               {mode ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}
             </Button>
           </Form>
-        </div>
+        </div> */}
       </div>
     </>
   )

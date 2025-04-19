@@ -21,7 +21,7 @@
       --body-font: 'Poppins', sans-serif;
 
       /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
-      --biggest-font-size: 3rem;
+      --biggest-font-size: 4rem;
       --h1-font-size: 2.25rem;
       --h2-font-size: 1.5rem;
       --h3-font-size: 1.25rem;
@@ -107,6 +107,8 @@
 
     button {
       cursor: pointer;
+      z-index: -1;
+      position: relative;
     }
 
     button,
@@ -115,11 +117,19 @@
       outline: none;
     }
 
+    #smooth-wrapper {
+      overflow: hidden;
+    }
+
+    #smooth-content {
+      will-change: transform;
+    }
+
     /*=============== LAYOUT ===============*/
     .container {
-      max-width: 1250px;
-      margin-left: auto;
-      margin-right: auto;
+      // max-width: 1250px;
+      // margin-left: auto;
+      // margin-right: auto;
 
       &.grid {
         display: grid;
@@ -129,6 +139,7 @@
     /*=============== REUSABLE CSS CLASSES ===============*/
     .section {
       padding: 4rem 0 4rem;
+      z-index: -1;
 
       .section-title {
         text-align: center;
@@ -165,19 +176,16 @@
 
     /*=============== MAIN ===============*/
     .main {
-      margin-left: 100px;
       overflow-x: hidden;
     }
 
     /*===== Home Section =====*/
     .home {
-      // background: url('../../img/hero.jpg');
-      // background-size: contain;
-      // background-repeat: no-repeat;
-      // background-position: center center;
       position: relative;
       height: 100vh;
       background-color: black;
+      z-index: 0;
+      overflow: hidden;
 
       &::before {
         content: "";
@@ -186,6 +194,7 @@
         left: 0;
         width: 100%;
         height: 100%;
+        z-index: -1;
         background: url('../../img/hero.jpg') center center no-repeat;
         background-size: contain;
         opacity: 0;
@@ -200,17 +209,58 @@
         position: relative;
         height: 100%;
         align-items: center;
+        perspective: 1000px;
+
+        .rotating-line {
+          font-size: 2rem;
+          font-weight: bold;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .rotating-text {
+          display: inline-block;
+          padding: 6px 14px;
+          color: #fff;
+          transform-style: preserve-3d;
+          backface-visibility: hidden;
+          transform-origin: center;
+          will-change: transform, opacity, filter;
+          min-width: 220px;
+          font-size: 1rem;
+          font-weight: 500;
+          text-align: center;
+          transition: background-color 0.4s ease-in-out;
+        }
 
         .data {
           position: relative;
-          top: -5.5rem;
+          color: var(--white-color);
+
+          .custom-cursor {
+            display: inline-block;
+            width: 1px;
+            height: 1em;
+            background-color: var(--white-color);
+            margin-left: 5px;
+            animation: blink 1.2s steps(2, start) infinite;
+            vertical-align: bottom;
+          }
+
+          @keyframes blink {
+            to {
+              visibility: hidden;
+            }
+          }
 
           .title {
             font-size: var(--biggest-font-size);
+            color: var(--white-color);
           }
 
           .subtitle {
-            font-size: var(--h3-font-size);
+            font-size: var(--h2-font-size);
             font-weight: var(--font-bold);
             letter-spacing: .5px;
             text-transform: uppercase;
@@ -235,7 +285,7 @@
           column-gap: 1.8rem;
           position: absolute;
           left: 0.75rem;
-          bottom: 1.8rem;
+          bottom: 3rem;
 
           .info-item {
             display: flex;
@@ -511,8 +561,8 @@
     /* For Large Devices */
     @media screen and (max-width: 1408px) {
       .container {
-        margin-left: var(--mb-2-5);
-        margin-right: var(--mb-2-5);
+        // margin-left: var(--mb-2-5);
+        // margin-right: var(--mb-2-5);
       }
     }
 
@@ -520,8 +570,8 @@
 
     @media screen and (max-width: 1024px) {
       .container {
-        margin-left: var(--mb-1-5);
-        margin-right: var(--mb-1-5);
+        // margin-left: var(--mb-1-5);
+        // margin-right: var(--mb-1-5);
       }
 
       .main {
@@ -624,8 +674,8 @@
     /* For Small Devices */
     @media screen and (max-width: 350px) {
       .container {
-        margin-left: var(--mb-1);
-        margin-right: var(--mb-1);
+        // margin-left: var(--mb-1);
+        // margin-right: var(--mb-1);
       }
 
       .section {
