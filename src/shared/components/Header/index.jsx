@@ -13,7 +13,6 @@ const Header = () => {
   })
 
   const handleModeClick = () => {
-    console.log('hi')
     setMode(prevMode => !prevMode)
   }
 

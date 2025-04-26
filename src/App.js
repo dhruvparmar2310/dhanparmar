@@ -14,14 +14,16 @@ import Technology from './shared/components/Technology'
 import Header from './shared/components/Header'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import FluidCursor from './shared/components/FluidCursor'
+import FlipWords from './shared/components/FlipWords'
 
-const rotatingTexts = [
-  // { text: 'React.js Developer', bg: '#ff7f7f' }, // Light red
-  { text: 'Front-End Specialist', bg: '#ff7f7f' }, // Light green
-  { text: 'Performance Optimization', bg: '#1eff0b' }, // Dodger blue
-  { text: 'SEO Friendly', bg: '#9370db' }, // Medium purple
-  { text: 'Responsive Design', bg: '#ffd700' } // Golden yellow
-]
+// const rotatingTexts = [
+//   // { text: 'React.js Developer', bg: '#ff7f7f' }, // Light red
+//   { text: 'Front-End Specialist', bg: '#ff7f7f' }, // Light green
+//   { text: 'Performance Optimization', bg: '#1eff0b' }, // Dodger blue
+//   { text: 'SEO Friendly', bg: '#9370db' }, // Medium purple
+//   { text: 'Responsive Design', bg: '#ffd700' } // Golden yellow
+// ]
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -34,8 +36,8 @@ function App () {
   const subtitleRef = useRef(null)
   const descRef = useRef(null)
   const btnRef = useRef(null)
-  const rotatingRef = useRef(null)
-  const rotateTextIndex = useRef(0)
+  // const rotatingRef = useRef(null)
+  // const rotateTextIndex = useRef(0)
 
   // useEffect(() => {
   //   let index = 0
@@ -109,48 +111,48 @@ function App () {
       '-=0.5' // Delay the my-info animation to start after the button animation
     )
 
-    const el = rotatingRef.current
+    // const el = rotatingRef.current
 
     // Set initial text and background
-    el.innerText = rotatingTexts[0].text
-    el.style.backgroundColor = rotatingTexts[0].bg
+    // el.innerText = rotatingTexts[0].text
+    // el.style.backgroundColor = rotatingTexts[0].bg
 
-    gsap.set(el, {
-      transformPerspective: 1000,
-      transformStyle: 'preserve-3d'
-    })
-    const updateText = () => {
-      // Animate out
-      gsap.to(el, {
-        rotationX: 90,
-        autoAlpha: 0,
-        filter: 'blur(3px)',
-        duration: 0.6,
-        ease: 'power2.in',
-        onComplete: () => {
-          rotateTextIndex.current = (rotateTextIndex.current + 1) % rotatingTexts.length
-          el.innerText = rotatingTexts[rotateTextIndex.current].text
-          el.style.backgroundColor = rotatingTexts[rotateTextIndex.current].bg
+    // gsap.set(el, {
+    //   transformPerspective: 1000,
+    //   transformStyle: 'preserve-3d'
+    // })
+    // const updateText = () => {
+    //   // Animate out
+    //   gsap.to(el, {
+    //     rotationX: 90,
+    //     autoAlpha: 0,
+    //     filter: 'blur(3px)',
+    //     duration: 0.6,
+    //     ease: 'power2.in',
+    //     onComplete: () => {
+    //       rotateTextIndex.current = (rotateTextIndex.current + 1) % rotatingTexts.length
+    //       el.innerText = rotatingTexts[rotateTextIndex.current].text
+    //       el.style.backgroundColor = rotatingTexts[rotateTextIndex.current].bg
 
-          // Reset rotation for next flip
-          gsap.set(el, { rotationX: -90 })
+    //       // Reset rotation for next flip
+    //       gsap.set(el, { rotationX: -90 })
 
-          // Animate in
-          gsap.to(el, {
-            rotationX: 0,
-            autoAlpha: 1,
-            filter: 'blur(0px)',
-            duration: 0.6,
-            ease: 'power2.out'
-          })
-        }
-      })
-    }
+    //       // Animate in
+    //       gsap.to(el, {
+    //         rotationX: 0,
+    //         autoAlpha: 1,
+    //         filter: 'blur(0px)',
+    //         duration: 0.6,
+    //         ease: 'power2.out'
+    //       })
+    //     }
+    //   })
+    // }
 
-    const interval = setInterval(updateText, 2500) // every 2s
+    // const interval = setInterval(updateText, 2500) // every 2s
     return () => {
       clearInterval(timer)
-      clearInterval(interval)
+      // clearInterval(interval)
     }
   }, [])
 
@@ -159,18 +161,32 @@ function App () {
       <Header />
       <main className='main'>
         <section className='home' id='home'>
+          <FluidCursor />
           <div className='home-container container grid'>
 
             <img src={logo} alt='' loading='lazy' className='home-img' />
 
             <div className='data'>
-              <h1 className='title fade-up' ref={titleRef}>
+              <h1 className='title fade-up gradient-text' ref={titleRef}>
                 {text}
                 <span className='custom-cursor'></span>
               </h1>
               <h3 className='subtitle' ref={subtitleRef}>
-              React.js Developer | <span className="rotating-text" ref={rotatingRef}>
-        </span>
+              React.js Developer | <span className='relative inline-block'>
+              <FlipWords
+                words={[
+                  'NextJs',
+                  'GraphQL',
+                  'Data Fetching',
+                  'Version Control',
+                  'SEO',
+                  'Optimized',
+                  'Scalable'
+                ]}
+                duration={3000} // Change word every 2 seconds
+              />
+              </span>
+              {/* <span className="rotating-text" ref={rotatingRef}></span> */}
               </h3>
               <p className='description' ref={descRef}>
               Crafting seamless and efficient web experiences with modern technologies.

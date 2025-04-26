@@ -105,6 +105,12 @@
       height: auto;
     }
 
+    canvas {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+
     button {
       cursor: pointer;
       z-index: -1;
@@ -138,7 +144,7 @@
 
     /*=============== REUSABLE CSS CLASSES ===============*/
     .section {
-      padding: 4rem 0 4rem;
+      padding: 5rem 0 4rem;
       z-index: -1;
 
       .section-title {
@@ -186,6 +192,7 @@
       background-color: black;
       z-index: 0;
       overflow: hidden;
+      cursor: none !important;
 
       &::before {
         content: "";
@@ -197,7 +204,7 @@
         z-index: -1;
         background: url('../../img/hero.jpg') center center no-repeat;
         background-size: contain;
-        opacity: 0;
+        opacity: 0.5;
         animation: fadeIn 2s ease-in-out forwards, glow 4s ease-in-out 2s infinite;
       }
 
@@ -211,38 +218,15 @@
         align-items: center;
         perspective: 1000px;
 
-        .rotating-line {
-          font-size: 2rem;
-          font-weight: bold;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-        }
-
-        .rotating-text {
-          display: inline-block;
-          padding: 6px 14px;
-          color: #fff;
-          transform-style: preserve-3d;
-          backface-visibility: hidden;
-          transform-origin: center;
-          will-change: transform, opacity, filter;
-          min-width: 220px;
-          font-size: 1rem;
-          font-weight: 500;
-          text-align: center;
-          transition: background-color 0.4s ease-in-out;
-        }
-
         .data {
           position: relative;
           color: var(--white-color);
 
           .custom-cursor {
             display: inline-block;
-            width: 1px;
+            width: 3px;
             height: 1em;
-            background-color: var(--white-color);
+            background: var(--skin-color);
             margin-left: 5px;
             animation: blink 1.2s steps(2, start) infinite;
             vertical-align: bottom;
@@ -268,6 +252,7 @@
             color: var(--secondary-color);
             font-family: 'BebasNeue';
             letter-spacing: 3px;
+            display: flex;
           }
 
           .description {
@@ -402,11 +387,11 @@
 
       0%,
       100% {
-        filter: brightness(1);
+        filter: brightness(0.5);
       }
 
       50% {
-        filter: brightness(1.7);
+        filter: brightness(1.5);
       }
     }
 
@@ -415,7 +400,7 @@
       display: inline-flex;
       align-items: center;
       column-gap: 0.5rem;
-      background-color: var(--skin-color);
+      background: var(--skin-color);
       color: var(--title-color);
       padding: 0.75rem 1.4rem;
       border-radius: 99px;
@@ -432,6 +417,14 @@
       &:hover {
         box-shadow: 0px 0px 30px #6338b5;
       }
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--skin-color) 10%, #be7dfb 50%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
     }
 
     /*===== About Section =====*/

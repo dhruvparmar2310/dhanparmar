@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 import React, { useLayoutEffect, useRef } from 'react'
 import { FaPaperPlane } from 'react-icons/fa'
-import aboutImg from '../../../assets/img/profile-1.jpeg'
+import aboutImg from '../../../assets/img/profile.jpeg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAward, faBarsProgress, faHeadset } from '@fortawesome/free-solid-svg-icons'
 import gsap from 'gsap'
@@ -24,7 +24,7 @@ const About = () => {
                     trigger: imgRef.current,
                     start: 'center bottom' // Trigger when image is halfway into view
                 },
-                x: -50,
+                x: 60,
                 opacity: 0,
                 duration: 1.8,
                 ease: 'power2.out'
@@ -88,18 +88,8 @@ const About = () => {
             <h2 className="section-title" data-heading="About">My Intro</h2>
 
             <div className="about-container container grid">
-                <div className='img-content'>
-                    <img
-                        src={aboutImg}
-                        alt="About Dhruv"
-                        loading="lazy"
-                        className="about-img"
-                        ref={imgRef}
-                    />
-                </div>
-
                 <div className="about-data">
-                    <h3 className="about-heading" ref={headingRef}>
+                    <h3 className="about-heading gradient-text" ref={headingRef}>
                         Hi, I&apos;m Dhruv Parmar, based in India
                     </h3>
 
@@ -134,6 +124,15 @@ const About = () => {
                     <a href="#contact" className="button" ref={buttonRef}>
                         <FaPaperPlane className="button-icon" /> Let&apos;s Connect
                     </a>
+                </div>
+                <div className='img-content'>
+                    <img
+                        src={aboutImg}
+                        alt="About Dhruv"
+                        loading="lazy"
+                        className="about-img"
+                        ref={imgRef}
+                    />
                 </div>
             </div>
         </section>
