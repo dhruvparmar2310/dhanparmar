@@ -26,7 +26,6 @@
     "sass": "^1.69.6",
     "tailwind-merge": "^3.2.0",
     "tailwindcss": "^4.1.4",
-    "typescript": "^5.8.3",
     "web-vitals": "^2.1.4",
     "wow.js": "^1.2.2"
   },
