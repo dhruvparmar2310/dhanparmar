@@ -1,7 +1,7 @@
 import { faAward, faGraduationCap } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { MdOutlineFileDownload } from 'react-icons/md'
-import React, { useEffect, useRef } from 'react'
+import React, { useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import { Container, Row, Col, Button } from 'react-bootstrap'
@@ -11,8 +11,23 @@ gsap.registerPlugin(ScrollTrigger)
 
 const Qualification = () => {
   const cardRefs = useRef([])
+  const sectionRef = useRef(null)
+  const sectionTitleRef = useRef(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(sectionTitleRef.current, {
+        scrollTrigger: {
+          trigger: sectionTitleRef.current,
+          start: 'top 90%'
+        },
+        y: 40,
+        opacity: 0,
+        duration: 1.5,
+        ease: 'power2.out'
+      })
+    }, sectionRef)
+
     cardRefs.current.forEach((card, index) => {
       gsap.fromTo(
         card,
@@ -31,15 +46,13 @@ const Qualification = () => {
         }
       )
     })
+    return () => ctx.revert()
   }, [])
 
   return (
-    <section id="qualification" className="qualification-section">
+    <section id="qualification" className="qualification-section section" ref={sectionRef}>
       <Container>
-        <div className="text-center mb-5">
-          <span className="subheading">My Journey</span>
-          <h2 className="section-title">Qualification</h2>
-        </div>
+        <h2 className="section-title" data-heading="My Journey" ref={sectionTitleRef}>Qualification</h2>
 
         <Row className="g-4">
           <Col md={6}>

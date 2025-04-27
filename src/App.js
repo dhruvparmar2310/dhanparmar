@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import About from './shared/components/About'
 import Qualification from './shared/components/Qualification'
-import Skills from './shared/components/Skills'
 import Work from './shared/components/Work'
 import Services from './shared/components/Services'
 import ContactUs from './shared/components/Contact'
@@ -16,14 +15,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import FluidCursor from './shared/components/FluidCursor'
 import FlipWords from './shared/components/FlipWords'
-
-// const rotatingTexts = [
-//   // { text: 'React.js Developer', bg: '#ff7f7f' }, // Light red
-//   { text: 'Front-End Specialist', bg: '#ff7f7f' }, // Light green
-//   { text: 'Performance Optimization', bg: '#1eff0b' }, // Dodger blue
-//   { text: 'SEO Friendly', bg: '#9370db' }, // Medium purple
-//   { text: 'Responsive Design', bg: '#ffd700' } // Golden yellow
-// ]
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -36,33 +27,7 @@ function App () {
   const subtitleRef = useRef(null)
   const descRef = useRef(null)
   const btnRef = useRef(null)
-  // const rotatingRef = useRef(null)
-  // const rotateTextIndex = useRef(0)
 
-  // useEffect(() => {
-  //   let index = 0
-  //   const timer = setInterval(() => {
-  //     setText(fullText.slice(0, index + 1))
-  //     index++
-  //     if (index === fullText.length) {
-  //       clearInterval(timer)
-  //     }
-  //   }, typingSpeed)
-
-  //   if (typeof window !== 'undefined') {
-  //     // Use require to ensure proper import
-  //     const WOW = require('wow.js/dist/wow')
-  //     const wow = new WOW({
-  //       boxClass: 'wow', // Class for animation trigger
-  //       animateClass: 'animate__animated', // Animate.css class prefix
-  //       offset: 0, // Distance to start the animation
-  //       mobile: true, // Trigger animations on mobile
-  //       live: true // Act on asynchronously loaded content
-  //     })
-  //     wow.init()
-  //   }
-  //   return () => clearInterval(timer)
-  // }, [])
   useEffect(() => {
     // Apply global scroll animation
     ScrollTrigger.defaults({
@@ -220,31 +185,15 @@ function App () {
         <About />
         <Qualification />
         <Technology />
-        <Skills />
+        {/* <Skills /> */}
         <Work />
         <Services />
         <ContactUs />
 
         <footer className='footer'>
           <div className='footer-bg'>
-            <div className='footer-container container grid'>
-              <div>
-                <h1 className='footer-title'>Dhruv Parmar</h1>
-                <span className='footer-subtitle'>Front End Developer</span>
-              </div>
-
-              <ul className='footer-links'>
-                <li>
-                  <a href="#services" className='footer-link'>Services</a>
-                </li>
-                <li>
-                  <a href="#work" className='footer-link'>Work</a>
-                </li>
-                <li>
-                  <a href="#contact" className='footer-link'>Contact</a>
-                </li>
-              </ul>
-
+            <div className='footer-container container'>
+              <p className='footer-copy'>Copyright &#169; 2024. All right reserved.</p>
               <div className='footer-socials'>
                 <a href='https://in.linkedin.com/in/dhruv-parmar-484636227' title='Dhruv Parmar | Linkedin' target='_blank' className='social-link' rel="noreferrer">
                   <FaLinkedin />
@@ -257,8 +206,6 @@ function App () {
                 </a>
               </div>
             </div>
-
-            <p className='footer-copy'>Copyright &#169; 2024. All right reserved.</p>
           </div>
         </footer>
       </main>

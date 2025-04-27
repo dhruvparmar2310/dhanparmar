@@ -15,7 +15,23 @@
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        animation: fadeIn 2s ease-in-out forwards;
+        animation: fadeInRight 2s ease-in-out forwards;
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        width: 430px;
+        height: 430px;
+        position: absolute;
+        bottom: -250px;
+        left: 20px;
+        z-index: -1 !important;
+        background-image: url('../../../img/bp-2.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        animation: fadeInLeft 2s ease-in-out forwards;
     }
 
     .about-container {
@@ -26,58 +42,61 @@
         // align-items: center;
 
         .img-content {
-            position: relative;
             width: 100%;
             height: 100%;
+            display: grid;
+            place-items: center;
 
-            .about-img {
-                width: 450px;
-                border-radius: 0.75rem;
-                justify-self: center;
+            .img-card {
+                position: relative;
+                padding: 5px;
+                background: rgb(255, 255, 255);
+                width: 300px;
+                height: 410px;
+                border-radius: 10px;
+                transition: all 0.5s ease-in-out;
+
+                &:hover {
+                    box-shadow: 0 0 30px rgba(255, 255, 255, 0.459);
+
+                    .about-img {
+                        filter: grayscale(0%) brightness(100%);
+                    }
+                }
+
+                .about-img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 5px;
+                    justify-self: center;
+                    object-fit: cover;
+                    filter: grayscale(50%) brightness(80%);
+                    transition: all 0.8s ease-in-out;
+                }
+
+                .myself-name {
+                    margin: 0;
+                    text-align: center;
+                    font-weight: 600;
+                    font-family: sans-serif;
+                    color: var(--skin-color);
+                    // letter-spacing: 5px;
+                    padding: 8px 0;
+                    font-size: var(--h2-font-size);
+                    position: absolute;
+                    top: 0;
+                    left: -48px;
+                    transform: rotate(-90deg) translate(-45%, -100%);
+                }
             }
         }
 
         .about-data {
-            .about-heading {
-                font-size: var(--h1-font-size);
-                margin-bottom: var(--mb-0-75);
-                font-family: 'BebasNeue';
-                letter-spacing: 2px;
-                font-weight: 500;
-            }
+            text-align: center;
 
             .about-description {
-                text-align: justify;
                 font-size: 16px;
                 margin-bottom: var(--mb-2);
-            }
-
-            .about-info {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-                gap: 0.75rem;
-                margin-bottom: var(--mb-3);
-
-                .about-box {
-                    text-align: center;
-                    border-radius: 0.25rem;
-                    padding: 1rem 1.25rem;
-                    background-color: var(--box-color);
-
-                    .about-icon {
-                        font-size: 1.5rem;
-                        color: var(--skin-color);
-                        margin-bottom: var(--mb-0-75);
-                    }
-
-                    .about-title {
-                        font-size: var(--small-font-size);
-                    }
-
-                    .about-subtitle {
-                        font-size: var(--smaller-font-size);
-                    }
-                }
             }
         }
     }

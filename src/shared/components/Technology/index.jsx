@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useInView } from 'framer-motion'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import ReactLogo from '../../../assets/img/tech/react.png'
 import ReactQueryLogo from '../../../assets/img/tech/react-query.png'
 import GraphQLLogo from '../../../assets/img/tech/graphql.png'
@@ -11,71 +11,59 @@ import TailwindLogo from '../../../assets/img/tech/Tailwind_CSS.png'
 import FigmaLogo from '../../../assets/img/tech/figma-logo.png'
 import NextJsLogo from '../../../assets/img/tech/nextjs-icon.png'
 import SocketLogo from '../../../assets/img/tech/socket-io-icon.png'
-import CanvaLogo from '../../../assets/img/tech/canva.png'
-import JavascriptLogo from '../../../assets/img/tech/javascript.png'
 import WebpackLogo from '../../../assets/img/tech/webpack.png'
+import ReactRouterLogo from '../../../assets/img/tech/react-router.png'
+import GitLogo from '../../../assets/img/tech/git_icon.png'
+import GithubLogo from '../../../assets/img/tech/github.png'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const Technology = () => {
-  const techCardsRef = useRef(null)
+  const technologyCardsRef = useRef(null)
 
-  useEffect(() => {
-    // // Register ScrollTrigger with GSAP
-    // gsap.registerPlugin(ScrollTrigger)
+  // useLayoutEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     gsap.from('.tech-card', {
+  //       scrollTrigger: {
+  //         trigger: technologyCardsRef.current,
+  //         start: 'top 80%'
+  //       },
+  //       opacity: 0,
+  //       y: 30,
+  //       duration: 1.5, // Slower reveal
+  //       stagger: 0.3, // Delay between each card
+  //       ease: 'power2.out' // Smooth easing
+  //     })
+  //   }, technologyCardsRef)
 
-    // // Create the animation for tech cards
-    // gsap.fromTo(
-    //   '.tech-card',
-    //   {
-    //     opacity: 0,
-    //     y: 50
-    //   },
-    //   {
-    //     opacity: 1,
-    //     y: 0,
-    //     duration: 1.3,
-    //     ease: 'power3.out',
-    //     stagger: 0.1, // Stagger the animation for each tech card
-    //     scrollTrigger: {
-    //       trigger: '.technology',
-    //       start: 'top 80%',
-    //       toggleActions: 'play none none none' // Start animation when it enters the view
-    //     }
-    //   }
-    // )
+  //   return () => ctx.revert()
+  // }, [])
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from('.tech-card', {
         scrollTrigger: {
-          trigger: techCardsRef.current,
+          trigger: technologyCardsRef.current,
           start: 'top 80%'
         },
         opacity: 0,
-        y: 30,
-        duration: 1.5, // Slower reveal
-        stagger: 0.3, // Delay between each card
-        ease: 'power2.out' // Smooth easing
+        y: 50, // a little more distance for ghost effect
+        duration: 2, // slower
+        stagger: 0.4, // slower appearance one-by-one
+        ease: 'power3.out' // smooth, ghost-like easing
       })
-    }, techCardsRef)
+    }, technologyCardsRef)
 
     return () => ctx.revert()
   }, [])
 
   return (<>
-    <section className="technology section" id='technology' ref={techCardsRef}>
+    <section className="technology section" id='technology' ref={technologyCardsRef}>
       <h2 className='section-title' data-heading='Technologies I Use'>Tech Stack</h2>
 
       <div className='technology-container container'>
         <div className='inner-content'>
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={JavascriptLogo} alt='JavaScript Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>JavaScript</p>
-          </div>
-
           <div className='tech-card'>
             <div className='tech-icon'>
               <img src={ReactLogo} alt='React Logo' className='img-fluid' />
@@ -106,6 +94,13 @@ const Technology = () => {
 
           <div className='tech-card'>
             <div className='tech-icon'>
+              <img src={ReactRouterLogo} alt='React Router Logo' className='img-fluid' />
+            </div>
+            <p className='tech-name'>React Router</p>
+          </div>
+
+          <div className='tech-card'>
+            <div className='tech-icon'>
               <img src={NextJsLogo} alt='NextJs Logo' className='img-fluid' />
             </div>
             <p className='tech-name'>NextJs</p>
@@ -116,6 +111,21 @@ const Technology = () => {
               <img src={ReduxLogo} alt='Redux Logo' className='img-fluid' />
             </div>
             <p className='tech-name'>Redux</p>
+
+          </div>
+
+          <div className='tech-card'>
+            <div className='tech-icon'>
+              <img src={GitLogo} alt='Git Logo' className='img-fluid' />
+            </div>
+            <p className='tech-name'>Git</p>
+          </div>
+
+          <div className='tech-card'>
+            <div className='tech-icon'>
+              <img src={GithubLogo} alt='Github Logo' className='img-fluid' />
+            </div>
+            <p className='tech-name'>Github</p>
           </div>
 
           <div className='tech-card'>
@@ -152,13 +162,6 @@ const Technology = () => {
               <img src={FigmaLogo} alt='Figma Logo' className='img-fluid' />
             </div>
             <p className='tech-name'>Figma</p>
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={CanvaLogo} alt='Canva Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>Cnava</p>
           </div>
         </div>
       </div>

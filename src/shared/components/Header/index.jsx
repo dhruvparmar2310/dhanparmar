@@ -49,6 +49,7 @@ const Header = () => {
       //   const homeSection = document.getElementById('home')
       const aboutSection = document.getElementById('about')
       const skillSection = document.getElementById('skills')
+      const technologySection = document.getElementById('technology')
       const workSection = document.getElementById('work')
       const servicesSection = document.getElementById('services')
       const contactSection = document.getElementById('contact')
@@ -57,10 +58,12 @@ const Header = () => {
 
       if (scrollPosition < aboutSection?.offsetTop) {
         setCurrentSection('home')
-      } else if (scrollPosition >= aboutSection?.offsetTop && scrollPosition < skillSection?.offsetTop) {
+      } else if (scrollPosition >= aboutSection?.offsetTop && scrollPosition < technologySection?.offsetTop) {
         setCurrentSection('about')
       } else if (scrollPosition >= skillSection?.offsetTop && scrollPosition < workSection?.offsetTop) {
         setCurrentSection('skills')
+      } else if (scrollPosition >= technologySection?.offsetTop && scrollPosition < workSection?.offsetTop) {
+        setCurrentSection('technology')
       } else if (scrollPosition >= workSection?.offsetTop && scrollPosition < servicesSection?.offsetTop) {
         setCurrentSection('work')
       } else if (scrollPosition >= servicesSection?.offsetTop && scrollPosition < contactSection?.offsetTop) {
@@ -84,6 +87,11 @@ const Header = () => {
   }, [])
   return (
     <>
+      <div className='mobile-nav-logo'>
+        <a href='/' className='logo-text'>
+          <img src={logo} alt='Dhruv Parmar' loading='lazy' />
+        </a>
+      </div>
       <div className='nav-toggle' id='nav-toggle' onClick={() => setShow(!show)}>
         <FontAwesomeIcon icon={faBars} />
       </div>
@@ -105,10 +113,10 @@ const Header = () => {
                   <span className={`nav-link ${currentSection === 'about' && 'active'}`} onClick={(e) => handleClick(e, 'about')}>About</span>
                 </li>
                 <li className='nav-item'>
-                  <span className={`nav-link ${currentSection === 'skills' && 'active'}`} onClick={(e) => handleClick(e, 'skills')}>Skills</span>
+                  <span className={`nav-link ${currentSection === 'technology' && 'active'}`} onClick={(e) => handleClick(e, 'technology')}>Technology</span>
                 </li>
                 <li className='nav-item'>
-                  <span className={`nav-link ${currentSection === 'work' && 'active'}`} onClick={(e) => handleClick(e, 'work')}>Work</span>
+                  <span className={`nav-link ${currentSection === 'work' && 'active'}`} onClick={(e) => handleClick(e, 'work')}>Projects</span>
                 </li>
                 <li className='nav-item'>
                   <span className={`nav-link ${currentSection === 'services' && 'active'}`} onClick={(e) => handleClick(e, 'services')}>Services</span>

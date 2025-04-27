@@ -1,10 +1,9 @@
 .qualification-section {
     padding: 80px 0;
-    ;
     color: var(--white-color);
 
     .subheading {
-        color: #888;
+        color: var(--skin-color);
         font-size: 0.9rem;
         letter-spacing: 1px;
         display: block;
@@ -23,12 +22,14 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
         padding: 25px;
         border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.757);
         transition: transform 0.3s ease;
         height: 100%;
+        cursor: pointer;
 
         &:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) !important;
+            background: linear-gradient(135deg, rgb(44 25 79) 40%, #7f4bdd 100%);
         }
 
         .card-title {
@@ -79,6 +80,34 @@
 
         &:hover {
             background: linear-gradient(135deg, #6d28d9, #7e22ce);
+        }
+
+        svg {
+            font-size: 1.25rem;
+        }
+    }
+}
+
+body.light {
+    .qualification-section {
+        background: white;
+
+        .glass-card {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.198);
+
+            .card-title,
+            .card-text,
+            .card-date {
+                color: var(--box-color);
+            }
+
+            .card-heading {
+                color: var(--skin-color);
+            }
+        }
+
+        hr {
+            border-color: rgb(93, 93, 93);
         }
     }
 }

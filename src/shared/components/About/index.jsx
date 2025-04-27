@@ -2,15 +2,15 @@
 import React, { useLayoutEffect, useRef } from 'react'
 import { FaPaperPlane } from 'react-icons/fa'
 import aboutImg from '../../../assets/img/profile.jpeg'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAward, faBarsProgress, faHeadset } from '@fortawesome/free-solid-svg-icons'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import { Col, Row } from 'react-bootstrap'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const About = () => {
     const sectionRef = useRef(null)
+    const sectionTitleRef = useRef(null)
     const imgRef = useRef(null)
     const headingRef = useRef(null)
     const descRefs = useRef([])
@@ -22,11 +22,22 @@ const About = () => {
             gsap.from(imgRef.current, {
                 scrollTrigger: {
                     trigger: imgRef.current,
-                    start: 'center bottom' // Trigger when image is halfway into view
+                    // start: 'center bottom' // Trigger when image is halfway into view
+                    start: 'top 90%'
                 },
-                x: 60,
                 opacity: 0,
-                duration: 1.8,
+                duration: 1,
+                ease: 'power2.out'
+            })
+
+            gsap.from(sectionTitleRef.current, {
+                scrollTrigger: {
+                    trigger: sectionTitleRef.current,
+                    start: 'top 90%'
+                },
+                y: 40,
+                opacity: 0,
+                duration: 1.5,
                 ease: 'power2.out'
             })
 
@@ -43,7 +54,7 @@ const About = () => {
 
             gsap.from(descRefs.current, {
                 scrollTrigger: {
-                    trigger: headingRef.current,
+                    trigger: descRefs.current,
                     start: 'top 80%'
                 },
                 y: 40,
@@ -85,55 +96,47 @@ const About = () => {
 
     return (
         <section className="about section" id="about" ref={sectionRef}>
-            <h2 className="section-title" data-heading="About">My Intro</h2>
+            <h2 className="section-title" data-heading="About" ref={sectionTitleRef}>My Intro</h2>
 
-            <div className="about-container container grid">
-                <div className="about-data">
-                    <h3 className="about-heading gradient-text" ref={headingRef}>
-                        Hi, I&apos;m Dhruv Parmar, based in India
-                    </h3>
+            <div className="about-container container">
+                <Row>
+                    <Col xl={6} lg={6} md={6} sm={12}>
+                        <div className="about-data">
+                            {[
+                                'I specialize in architecting high-performance, scalable web applications with React.js, Next.js, Redux, GraphQL and React Query for efficient data fetching, transforming ideas into seamless, SEO-friendly digital experiences.',
+                                'Whether integrating advanced features or optimizing existing systems, I adhere to clean-code principles, reusable component patterns, all driven by a user centric design philosophy.',
+                                'My work emphasizes accessibility, responsiveness and maintainability, ensuring that each interface delivers optimal performance today and scales gracefully to meet tomorrow’s demands.',
+                                'After reviewing my work, you’ll see the happy faces of my clients. I design websites from the my vision, my portfolio is just one example and I’m confident you’ll love the results.'
+                            ].map((text, i) => (
+                                <p
+                                    key={i}
+                                    className="about-description"
+                                    ref={(el) => (descRefs.current[i] = el)}
+                                >
+                                    {text}
+                                </p>
+                            ))}
 
-                    {[
-                        'I craft high-performance, scalable, and modern web applications using React.js, Next.js, Redux, GraphQL, and React Query. My expertise lies in transforming ideas into seamless digital experiences that are fast, optimized, and SEO-friendly.',
-                        "Whether it's building from scratch or scaling existing systems, I prioritize clean code, reusable components, and pixel-perfect UIs with a strong focus on user-centric design and performance optimization.",
-                        'I focus on building accessible, responsive, and maintainable web interfaces that not only meet user expectations but also scale effortlessly with growing product demands.'
-                    ].map((text, i) => (
-                        <p
-                            key={i}
-                            className="about-description"
-                            ref={(el) => (descRefs.current[i] = el)}
-                        >
-                            {text}
-                        </p>
-                    ))}
-
-                    <div className="about-info">
-                        {[
-                            { icon: faAward, title: 'Experience', subtitle: 'React.js & Front-End' },
-                            { icon: faBarsProgress, title: 'Completed', subtitle: '20+ Projects' },
-                            { icon: faHeadset, title: 'Support', subtitle: 'Online 24/7' }
-                        ].map((box, i) => (
-                            <div className="about-box" key={i} ref={(el) => (infoBoxRefs.current[i] = el)}>
-                                <FontAwesomeIcon icon={box.icon} className="about-icon" />
-                                <h3 className="about-title">{box.title}</h3>
-                                <span className="about-subtitle">{box.subtitle}</span>
+                            <a href="#contact" className="button" ref={buttonRef}>
+                                <FaPaperPlane className="button-icon" /> Let&apos;s Connect
+                            </a>
+                        </div>
+                    </Col>
+                    <Col xl={6} lg={6} md={6} sm={12}>
+                        <div className='img-content'>
+                            <div className='img-card'>
+                                <img
+                                    src={aboutImg}
+                                    alt="About Dhruv"
+                                    loading="lazy"
+                                    className="about-img"
+                                    ref={imgRef}
+                                />
+                                <h3 className='gradient-text myself-name'>Dhruv Parmar</h3>
                             </div>
-                        ))}
-                    </div>
-
-                    <a href="#contact" className="button" ref={buttonRef}>
-                        <FaPaperPlane className="button-icon" /> Let&apos;s Connect
-                    </a>
-                </div>
-                <div className='img-content'>
-                    <img
-                        src={aboutImg}
-                        alt="About Dhruv"
-                        loading="lazy"
-                        className="about-img"
-                        ref={imgRef}
-                    />
-                </div>
+                        </div>
+                    </Col>
+                </Row>
             </div>
         </section>
     )

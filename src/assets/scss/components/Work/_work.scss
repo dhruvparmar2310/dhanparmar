@@ -7,215 +7,39 @@
     z-index: 0;
 
     .work-card {
-        background-color: var(--box-color);
-        border-radius: 0.5rem;
-        overflow: hidden;
-        height: 300px;
-        min-height: 300px;
+        width: 100%;
+        height: auto;
         position: relative;
         cursor: pointer;
 
-        &:hover {
-            .work-card-body {
-                display: grid;
-                top: 0;
-            }
-        }
-
-        .portfolio-item-details {
-            display: none;
-        }
-
         .work-card-header {
             width: 100%;
-            height: 100%;
+            height: 250px;
+            min-height: 250px;
             padding: 1rem;
+            border-radius: 0.5rem;
+            background-color: var(--box-color);
 
             .work-img {
                 width: 100%;
                 height: 100%;
                 object-fit: contain;
-                filter: brightness(100%) saturate(100%);
                 // border-radius: 0.5rem;
                 margin-bottom: var(--mb-1);
             }
         }
 
         .work-card-body {
-            display: none;
-            place-items: center;
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            padding: 1.25rem;
-            border-radius: 0.5rem;
-            transition: all 0.5s ease-in-out;
-            background: rgba(0, 0, 0, 0.711);
-            border: 2px dotted var(--white-color);
+            display: block;
+            padding: 10px 0;
 
-            .work-title {
-                font-size: var(--h2-font-size);
-                font-weight: var(--font-bold);
-                margin-bottom: var(--mb-0-5);
-                text-wrap: wrap;
-                color: var(--white-color);
+            h2 {
+                letter-spacing: 0.5px;
             }
 
-            .work-button {
-                color: var(--white-color);
-                font-size: var(--small-font-size);
-                display: flex;
-                align-items: center;
-                column-gap: 0.25rem;
-                cursor: pointer;
-                padding: 10px 30px;
-                border-radius: 99px;
-                background: black;
-                letter-spacing: 1px;
-                transition: all 0.3s linear;
-                box-shadow: 0 0 30px rgba(255, 255, 255, 0.342);
-
-                &:hover {
-                    box-shadow: 0 0 30px rgba(255, 255, 255, 0.401),
-                        0 0 35px rgba(255, 255, 255, 0.342);
-                }
-            }
-        }
-    }
-}
-
-body.light {
-    .work-container {
-        .work-card {
-            .work-card-body {
-                .work-title {
-                    color: var(--white-color);
-                }
-            }
-        }
-    }
-}
-
-.work-filters {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 0.75rem;
-    margin-bottom: 2rem;
-
-    .work-item {
-        transition: all 0.3s ease-in-out;
-        cursor: pointer;
-        color: var(--title-color);
-        padding: 0.25rem 0.75rem;
-        font-weight: var(--font-medium);
-        border-radius: 0.5rem;
-    }
-
-    .active-work {
-        background-color: var(--skin-color);
-        color: var(--title-color);
-    }
-}
-
-.portfolio-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: var(--z-modal);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 1rem;
-    transition: all 0.5s ease-in-out;
-
-    .popup-inner {
-        background-color: var(--box-color);
-        width: 900px;
-        height: auto;
-        max-height: 500px;
-        border-radius: 0.5rem;
-        position: relative;
-        overflow: hidden;
-        overflow-y: auto;
-
-        .popup-content {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            align-items: center;
-            column-gap: 0rem;
-
-            .popup-close {
-                position: absolute;
-                top: 1.5rem;
-                right: 1.5rem;
-                font-size: 1.5rem;
-                color: var(--skin-color);
-                cursor: pointer;
-            }
-
-            .thumbnail {
-                width: 100%;
-                height: 100%;
-                padding: 1.5rem;
-
-                .popup-img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
-                    filter: brightness(100%) saturate(100%);
-                }
-            }
-
-            .popup-info {
-                padding: 3rem 2rem;
-
-                .popup-subtitle {
-                    font-size: var(--smaller-font-size);
-                    margin-bottom: var(--mb-0-25);
-                }
-
-                .popup-body {
-                    .details-title {
-                        font-size: var(--h3-font-size);
-                        font-weight: var(--font-medium);
-                        margin-bottom: var(--mb-1);
-                    }
-
-                    .details-description {
-                        font-size: var(--small-font-size);
-                        margin-bottom: var(--mb-2);
-                        text-align: justify;
-                    }
-
-                    .details-info {
-                        padding-left: 0;
-
-                        li {
-                            margin-bottom: var(--mb-0-75);
-                            text-transform: capitalize;
-                            font-size: var(--small-font-size);
-
-                            span {
-                                font-weight: normal;
-
-                                a {
-                                    text-transform: lowercase;
-                                    color: var(--skin-color);
-                                }
-                            }
-
-                            &:last-child {
-                                margin-bottom: 0;
-                            }
-                        }
-                    }
-                }
-
+            .button {
+                margin: 5px 0;
+                padding: 8px 25px;
             }
         }
     }
@@ -225,34 +49,16 @@ body.light {
     .work {
         background: var(--white-color);
 
-        .work-filters {
-            .work-item {
-                color: var(--skin-color);
-            }
+        .work-container {
+            .work-card {
+                .work-card-header {
+                    background: linear-gradient(0deg, black, rgb(193, 193, 193));
+                }
 
-            .active-work {
-                color: var(--white-color);
-            }
-        }
-
-        .work-card {
-            background: var(--white-color);
-            box-shadow: 0 0 30px rgb(206, 206, 206);
-            transition: all 0.5s linear;
-
-            .work-title {
-                color: var(--secondary-color);
-            }
-        }
-
-        .portfolio-popup {
-            .popup-inner {
-                color: var(--secondary-color);
-                font-weight: var(--font-bold);
-                background: var(--white-color);
-
-                .details-title {
-                    color: var(--skin-color);
+                .work-card-body {
+                    .work-title {
+                        color: var(--white-color);
+                    }
                 }
             }
         }
