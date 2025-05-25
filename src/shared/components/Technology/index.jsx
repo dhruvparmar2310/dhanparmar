@@ -15,6 +15,11 @@ import WebpackLogo from '../../../assets/img/tech/webpack.png'
 import ReactRouterLogo from '../../../assets/img/tech/react-router.png'
 import GitLogo from '../../../assets/img/tech/git_icon.png'
 import GithubLogo from '../../../assets/img/tech/github.png'
+import VueLogo from '../../../assets/img/tech/vue.png'
+import CanvaLogo from '../../../assets/img/tech/canva.png'
+import ExpressLogo from '../../../assets/img/tech/Express.png'
+import JenkinsLogo from '../../../assets/img/tech/jenkins.png'
+import JiraLogo from '../../../assets/img/tech/jira.png'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -23,23 +28,6 @@ gsap.registerPlugin(ScrollTrigger)
 const Technology = () => {
   const technologyCardsRef = useRef(null)
 
-  // useLayoutEffect(() => {
-  //   const ctx = gsap.context(() => {
-  //     gsap.from('.tech-card', {
-  //       scrollTrigger: {
-  //         trigger: technologyCardsRef.current,
-  //         start: 'top 80%'
-  //       },
-  //       opacity: 0,
-  //       y: 30,
-  //       duration: 1.5, // Slower reveal
-  //       stagger: 0.3, // Delay between each card
-  //       ease: 'power2.out' // Smooth easing
-  //     })
-  //   }, technologyCardsRef)
-
-  //   return () => ctx.revert()
-  // }, [])
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from('.tech-card', {
@@ -73,6 +61,20 @@ const Technology = () => {
 
           <div className='tech-card'>
             <div className='tech-icon'>
+              <img src={NextJsLogo} alt='NextJs Logo' className='img-fluid' />
+            </div>
+            <p className='tech-name'>NextJs</p>
+          </div>
+
+          <div className='tech-card'>
+            <div className='tech-icon'>
+              <img src={VueLogo} alt='VueJs Logo' className='img-fluid' />
+            </div>
+            <p className='tech-name'>VueJs</p>
+          </div>
+
+          <div className='tech-card'>
+            <div className='tech-icon'>
               <img src={WebpackLogo} alt='Webpack Logo' className='img-fluid' />
             </div>
             <p className='tech-name'>Webpack</p>
@@ -101,9 +103,9 @@ const Technology = () => {
 
           <div className='tech-card'>
             <div className='tech-icon'>
-              <img src={NextJsLogo} alt='NextJs Logo' className='img-fluid' />
+              <img src={ExpressLogo} alt='ExpressJs Logo' className='img-fluid' />
             </div>
-            <p className='tech-name'>NextJs</p>
+            <p className='tech-name'>ExpressJs</p>
           </div>
 
           <div className='tech-card'>
@@ -162,6 +164,27 @@ const Technology = () => {
               <img src={FigmaLogo} alt='Figma Logo' className='img-fluid' />
             </div>
             <p className='tech-name'>Figma</p>
+          </div>
+
+          <div className='tech-card'>
+            <div className='tech-icon'>
+              <img src={CanvaLogo} alt='Canva Logo' className='img-fluid' />
+            </div>
+            <p className='tech-name'>Canva</p>
+          </div>
+
+          <div className='tech-card'>
+            <div className='tech-icon'>
+              <img src={JenkinsLogo} alt='Jenkins Logo' className='img-fluid' />
+            </div>
+            <p className='tech-name'>Jenkins</p>
+          </div>
+
+          <div className='tech-card'>
+            <div className='tech-icon'>
+              <img src={JiraLogo} alt='Jira Logo' className='img-fluid' />
+            </div>
+            <p className='tech-name'>Jira</p>
           </div>
         </div>
       </div>

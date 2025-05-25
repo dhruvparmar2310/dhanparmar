@@ -75,6 +75,10 @@ header {
         align-items: center;
         position: fixed;
 
+        .theme-mode-mobile {
+            display: none;
+        }
+
         .theme-mode {
             margin: 0 30px;
 
@@ -171,7 +175,7 @@ body.light {
 
                         &.active,
                         &:hover {
-                            color: var(--skin-color);
+                            color: var(--white-color);
                         }
                     }
                 }
@@ -207,7 +211,7 @@ body.light {
             .menu {
                 justify-content: center;
                 align-items: center;
-                background: rgba(0, 0, 0, 0.5);
+                background: rgba(0, 0, 0, 0.724);
                 backdrop-filter: blur(3px);
             }
 
@@ -269,6 +273,24 @@ body.light {
         align-items: center;
         position: relative;
 
+        .theme-mode {
+            display: none;
+        }
+
+        .theme-mode-mobile {
+            display: block;
+            margin: 0 30px;
+
+            .modeBtn {
+                width: 2.5rem;
+                height: 2.5rem;
+                background: var(--skin-color);
+                border-color: var(--skin-color);
+                z-index: 9999;
+                position: relative;
+            }
+        }
+
         .nav-menu {
             display: block;
             border: 2px solid gray;
@@ -278,6 +300,8 @@ body.light {
 
             .menu {
                 display: flex;
+                padding: 20px;
+                z-index: 9999;
 
                 .nav-list {
                     display: flex;

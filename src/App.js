@@ -7,7 +7,6 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 import About from './shared/components/About'
 import Qualification from './shared/components/Qualification'
 import Work from './shared/components/Work'
-import Services from './shared/components/Services'
 import ContactUs from './shared/components/Contact'
 import Technology from './shared/components/Technology'
 import Header from './shared/components/Header'
@@ -15,6 +14,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import FluidCursor from './shared/components/FluidCursor'
 import FlipWords from './shared/components/FlipWords'
+import Gallery from './shared/components/Gallery'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -75,45 +75,6 @@ function App () {
       { opacity: 1, y: 0, duration: 1, stagger: 0.3 }, // Adds stagger effect to each info item
       '-=0.5' // Delay the my-info animation to start after the button animation
     )
-
-    // const el = rotatingRef.current
-
-    // Set initial text and background
-    // el.innerText = rotatingTexts[0].text
-    // el.style.backgroundColor = rotatingTexts[0].bg
-
-    // gsap.set(el, {
-    //   transformPerspective: 1000,
-    //   transformStyle: 'preserve-3d'
-    // })
-    // const updateText = () => {
-    //   // Animate out
-    //   gsap.to(el, {
-    //     rotationX: 90,
-    //     autoAlpha: 0,
-    //     filter: 'blur(3px)',
-    //     duration: 0.6,
-    //     ease: 'power2.in',
-    //     onComplete: () => {
-    //       rotateTextIndex.current = (rotateTextIndex.current + 1) % rotatingTexts.length
-    //       el.innerText = rotatingTexts[rotateTextIndex.current].text
-    //       el.style.backgroundColor = rotatingTexts[rotateTextIndex.current].bg
-
-    //       // Reset rotation for next flip
-    //       gsap.set(el, { rotationX: -90 })
-
-    //       // Animate in
-    //       gsap.to(el, {
-    //         rotationX: 0,
-    //         autoAlpha: 1,
-    //         filter: 'blur(0px)',
-    //         duration: 0.6,
-    //         ease: 'power2.out'
-    //       })
-    //     }
-    //   })
-    // }
-
     // const interval = setInterval(updateText, 2500) // every 2s
     return () => {
       clearInterval(timer)
@@ -187,7 +148,8 @@ function App () {
         <Technology />
         {/* <Skills /> */}
         <Work />
-        <Services />
+        {/* <Services /> */}
+        <Gallery />
         <ContactUs />
 
         <footer className='footer'>

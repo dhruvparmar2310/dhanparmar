@@ -1,6 +1,40 @@
 .qualification-section {
     padding: 80px 0;
     color: var(--white-color);
+    position: relative;
+    z-index: 50 !important;
+
+    &::before {
+        content: '';
+        display: block;
+        width: 800px;
+        height: 800px;
+        position: absolute;
+        top: -200px;
+        right: -250px;
+        z-index: -1 !important;
+        background-image: url('../../../img/bbblurry-1.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right;
+        filter: brightness(80%);
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        width: 800px;
+        height: 800px;
+        position: absolute;
+        bottom: -200px;
+        left: -250px;
+        z-index: -1 !important;
+        background-image: url('../../../img/bbblurry-1.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: left;
+        filter: brightness(80%);
+    }
 
     .subheading {
         color: var(--skin-color);
@@ -16,76 +50,78 @@
         color: #fff;
     }
 
-    .glass-card {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.757);
-        transition: transform 0.3s ease;
-        height: 100%;
-        cursor: pointer;
+    .container {
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.757);
+            transition: transform 0.3s ease;
+            height: 100%;
+            cursor: pointer;
 
-        &:hover {
-            transform: translateY(-5px) !important;
-            background: linear-gradient(135deg, rgb(44 25 79) 40%, #7f4bdd 100%);
-        }
+            &:hover {
+                transform: translateY(-5px) !important;
+            }
 
-        .card-title {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            .card-title {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
 
-            .icon {
-                color: var(--skin-color);
+                .icon {
+                    color: var(--skin-color);
+                }
+            }
+
+            .card-heading {
+                font-weight: 600;
+                font-size: 1.1rem;
+            }
+
+            .card-text {
+                font-size: 0.95rem;
+                color: #ccc;
+                margin: 0;
+            }
+
+            .card-date {
+                font-size: 0.85rem;
+                color: #aaa;
+            }
+
+            hr {
+                border-color: rgba(255, 255, 255, 0.1);
+                margin: 15px 0;
             }
         }
 
-        .card-heading {
+        .resume-btn {
             font-weight: 600;
-            font-size: 1.1rem;
-        }
+            padding: 10px 24px;
+            font-size: 1rem;
+            border-radius: 50px;
+            // background: linear-gradient(135deg, #4f46e5, #9333ea);
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
 
-        .card-text {
-            font-size: 0.95rem;
-            color: #ccc;
-            margin: 0;
-        }
+            &:hover {
+                background: linear-gradient(135deg, #6d28d9, #7e22ce);
+            }
 
-        .card-date {
-            font-size: 0.85rem;
-            color: #aaa;
-        }
-
-        hr {
-            border-color: rgba(255, 255, 255, 0.1);
-            margin: 15px 0;
-        }
-    }
-
-    .resume-btn {
-        font-weight: 600;
-        padding: 10px 24px;
-        font-size: 1rem;
-        border-radius: 50px;
-        background: linear-gradient(135deg, #4f46e5, #9333ea);
-        border: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
-
-        &:hover {
-            background: linear-gradient(135deg, #6d28d9, #7e22ce);
-        }
-
-        svg {
-            font-size: 1.25rem;
+            svg {
+                font-size: 1.25rem;
+            }
         }
     }
+
 }
 
 body.light {

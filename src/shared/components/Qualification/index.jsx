@@ -91,7 +91,7 @@ const Qualification = () => {
 
         <div className="text-center mt-5">
           <a href={resume} download="Dhruv_Parmar" rel="noreferrer">
-            <Button variant="primary" className="resume-btn">
+            <Button variant="primary" className="resume-btn button">
               <MdOutlineFileDownload className="me-2" />
               Download Resume
             </Button>

@@ -2,7 +2,7 @@ import { faBars, faMoon, faSun, faTimes } from '@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
-import logo from '../../../assets/img/no-bg-logo.png'
+import logo from '../../../assets/img/logo-purple-trans.png'
 
 const Header = () => {
   const [currentSection, setCurrentSection] = useState('home')
@@ -48,10 +48,11 @@ const Header = () => {
     const handleScroll = () => {
       //   const homeSection = document.getElementById('home')
       const aboutSection = document.getElementById('about')
-      const skillSection = document.getElementById('skills')
+      // const skillSection = document.getElementById('skills')
       const technologySection = document.getElementById('technology')
       const workSection = document.getElementById('work')
-      const servicesSection = document.getElementById('services')
+      // const servicesSection = document.getElementById('services')
+      const clicksSection = document.getElementById('clicks')
       const contactSection = document.getElementById('contact')
 
       const scrollPosition = window.scrollY
@@ -60,14 +61,16 @@ const Header = () => {
         setCurrentSection('home')
       } else if (scrollPosition >= aboutSection?.offsetTop && scrollPosition < technologySection?.offsetTop) {
         setCurrentSection('about')
-      } else if (scrollPosition >= skillSection?.offsetTop && scrollPosition < workSection?.offsetTop) {
-        setCurrentSection('skills')
+        // } else if (scrollPosition >= skillSection?.offsetTop && scrollPosition < workSection?.offsetTop) {
+        //   setCurrentSection('skills')
       } else if (scrollPosition >= technologySection?.offsetTop && scrollPosition < workSection?.offsetTop) {
         setCurrentSection('technology')
-      } else if (scrollPosition >= workSection?.offsetTop && scrollPosition < servicesSection?.offsetTop) {
+      } else if (scrollPosition >= workSection?.offsetTop && scrollPosition < clicksSection?.offsetTop) {
         setCurrentSection('work')
-      } else if (scrollPosition >= servicesSection?.offsetTop && scrollPosition < contactSection?.offsetTop) {
-        setCurrentSection('services')
+        // } else if (scrollPosition >= servicesSection?.offsetTop && scrollPosition < contactSection?.offsetTop) {
+        //   setCurrentSection('services')
+      } else if (scrollPosition >= clicksSection?.offsetTop && scrollPosition < contactSection?.offsetTop) {
+        setCurrentSection('clicks')
       } else {
         setCurrentSection('contact')
       }
@@ -118,11 +121,21 @@ const Header = () => {
                 <li className='nav-item'>
                   <span className={`nav-link ${currentSection === 'work' && 'active'}`} onClick={(e) => handleClick(e, 'work')}>Projects</span>
                 </li>
-                <li className='nav-item'>
+                {/* <li className='nav-item'>
                   <span className={`nav-link ${currentSection === 'services' && 'active'}`} onClick={(e) => handleClick(e, 'services')}>Services</span>
+                </li> */}
+                <li className='nav-item'>
+                  <span className={`nav-link ${currentSection === 'clicks' && 'active'}`} onClick={(e) => handleClick(e, 'clicks')}>Gallery</span>
                 </li>
                 <li className='nav-item'>
                   <span className={`nav-link ${currentSection === 'contact' && 'active'}`} onClick={(e) => handleClick(e, 'contact')}>Contact</span>
+                </li>
+                <li>
+                  <div className='theme-mode-mobile'>
+                    <Button type='button' variant='primary' className='modeBtn' onClick={handleModeClick}>
+                      {mode ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}
+                    </Button>
+                  </div>
                 </li>
               </ul>
             </div>

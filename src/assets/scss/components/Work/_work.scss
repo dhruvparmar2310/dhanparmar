@@ -1,5 +1,5 @@
 .work-container {
-    grid-template-columns: repeat(3, 330px);
+    grid-template-columns: repeat(3, 335px);
     gap: 1.8rem;
     justify-content: center;
     padding-top: 1rem;
@@ -12,13 +12,23 @@
         position: relative;
         cursor: pointer;
 
+        &:hover {
+            .work-card-header {
+                .work-img {
+                    transform: scale(1.05);
+                    filter: brightness(90%) contrast(120%) saturate(110%) drop-shadow(0 0 5px var(--skin-color));
+                }
+            }
+        }
+
         .work-card-header {
             width: 100%;
-            height: 250px;
-            min-height: 250px;
+            height: 255px;
+            min-height: 255px;
             padding: 1rem;
             border-radius: 0.5rem;
             background-color: var(--box-color);
+            overflow: hidden;
 
             .work-img {
                 width: 100%;
@@ -26,6 +36,8 @@
                 object-fit: contain;
                 // border-radius: 0.5rem;
                 margin-bottom: var(--mb-1);
+                transition: all 0.5s linear;
+                filter: brightness(90%) contrast(120%) saturate(110%);
             }
         }
 
@@ -34,6 +46,7 @@
             padding: 10px 0;
 
             h2 {
+                font-size: var(--h3-font-size);
                 letter-spacing: 0.5px;
             }
 
@@ -52,12 +65,17 @@ body.light {
         .work-container {
             .work-card {
                 .work-card-header {
-                    background: linear-gradient(0deg, black, rgb(193, 193, 193));
+                    background: rgba(3, 3, 3, 0.437);
+                    // background: linear-gradient(0deg, black, rgb(193, 193, 193));
                 }
 
                 .work-card-body {
                     .work-title {
                         color: var(--white-color);
+                    }
+
+                    h2 {
+                        color: #000;
                     }
                 }
             }
