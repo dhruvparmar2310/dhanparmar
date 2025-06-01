@@ -1,13 +1,15 @@
-import { faBars, faMoon, faSun, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import logo from '../../../assets/img/logo-purple-trans.png'
+import useMediaQuery from '../../hooks/useMediaQuery'
 
 const Header = () => {
   const [currentSection, setCurrentSection] = useState('home')
   const [show, setShow] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const width = useMediaQuery('(max-width: 1024px)')
   const [mode, setMode] = useState(() => {
     return localStorage.getItem('theme-mode') === 'true'
   })
@@ -15,6 +17,15 @@ const Header = () => {
   const handleModeClick = () => {
     setMode(prevMode => !prevMode)
   }
+
+  useEffect(() => {
+    if (show && width) {
+      console.log('here')
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+  }, [width, show])
 
   useEffect(() => {
     if (mode) {
@@ -130,7 +141,7 @@ const Header = () => {
                 <li className='nav-item'>
                   <span className={`nav-link ${currentSection === 'contact' && 'active'}`} onClick={(e) => handleClick(e, 'contact')}>Contact</span>
                 </li>
-                <li>
+                <li className='nav-item'>
                   <div className='theme-mode-mobile'>
                     <Button type='button' variant='primary' className='modeBtn' onClick={handleModeClick}>
                       {mode ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}
@@ -147,9 +158,9 @@ const Header = () => {
             </Button>
           </div>
 
-          <div className='nav-close' id='nav-close' onClick={() => setShow(!show)}>
+          {/* <div className='nav-close' id='nav-close' onClick={() => setShow(!show)}>
             <FontAwesomeIcon icon={faTimes} />
-          </div>
+          </div> */}
         </nav>
       </header>
     </>

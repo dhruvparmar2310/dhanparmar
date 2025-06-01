@@ -37,7 +37,6 @@
     .about-container {
         z-index: 0 !important;
         position: relative;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         column-gap: 1rem;
         // align-items: center;
 
@@ -187,22 +186,57 @@ body.light {
 }
 
 @media screen and (max-width: 350px) {
-    .about-container {
-        row-gap: 2rem;
-
-        .about-heading {
-            font-size: var(--normal-font-size) !important;
+    .about {
+        &::before {
+            width: 180px;
+            height: 180px;
+            top: -100px;
+            right: -50px;
         }
 
-        .about-description {
-            font-size: var(--smaller-font-size) !important;
-            margin-bottom: var(--mb-1-5) !important;
+        &::after {
+            width: 230px;
+            height: 230px;
+            left: -20px;
+            bottom: -120px;
+            z-index: 1 !important;
         }
 
-        .about-info {
-            grid-template-columns: repeat(2, 1fr) !important;
-            row-gap: 0.5rem;
-            margin-bottom: var(--mb-1-5) !important;
+        .about-container {
+            row-gap: 2rem;
+
+            .row {
+                flex-direction: column-reverse;
+            }
+
+            .img-content {
+                margin-bottom: var(--mb-1-5) !important;
+
+                .img-card {
+                    width: 230px;
+                    height: 300px;
+
+                    .myself-name {
+                        font-size: 20px;
+                        transform: rotate(-90deg) translate(-48%, -75%);
+                    }
+                }
+            }
+
+            .about-heading {
+                font-size: var(--normal-font-size) !important;
+            }
+
+            .about-description {
+                text-align: justify;
+                font-size: var(--smaller-font-size) !important;
+            }
+
+            .about-info {
+                grid-template-columns: repeat(2, 1fr) !important;
+                row-gap: 0.5rem;
+                margin-bottom: var(--mb-1-5) !important;
+            }
         }
     }
 }

@@ -78,3 +78,27 @@ body.light {
         }
     }
 }
+
+@media screen and (max-width: 576px) {
+    .gallery-section {
+        p {
+            font-size: var(--normal-font-size);
+            margin: 0;
+        }
+
+        .gallery {
+            padding: 2rem 0;
+            column-gap: 10px;
+
+            .item {
+                margin-bottom: 10px !important;
+
+                .hover-popup {
+                    font-size: 12px;
+                    padding: 5px 15px;
+                    bottom: 8px;
+                }
+            }
+        }
+    }
+}

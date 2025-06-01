@@ -147,3 +147,28 @@ body.light {
         }
     }
 }
+
+@media screen and (max-width: 350px) {
+    .qualification-section {
+        padding-bottom: 0;
+
+        .section-title {
+            margin-bottom: 30px;
+            font-size: 30px;
+
+            &::before {
+                font-size: 15px;
+            }
+        }
+
+        .resume-btn {
+            font-size: 13px !important;
+            padding: 10px 15px !important;
+
+            svg {
+                font-size: 18px !important;
+                margin: 0 !important;
+            }
+        }
+    }
+}

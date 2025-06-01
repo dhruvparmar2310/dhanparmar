@@ -61,6 +61,66 @@
         }
     }
 
+    .contact-content {
+        .img-content {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            break-inside: avoid;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.648);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            img {
+                transition: transform 0.3s ease;
+            }
+
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.648);
+                cursor: pointer;
+
+                img {
+                    transform: scale(1.03);
+                }
+
+                .social-links {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
+            }
+
+            .social-links {
+                position: absolute;
+                bottom: 1rem;
+                left: 50%;
+                transform: translateX(-50%) translateY(20px);
+                opacity: 0;
+                transition: opacity 0.4s ease, transform 0.4s ease;
+                white-space: nowrap;
+                z-index: 2;
+                display: flex;
+                gap: 10px;
+
+                .social-link {
+                    background: var(--skin-color);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    color: #fff;
+                    padding: 10px;
+                    border-radius: 99px;
+
+                    .card-icon {
+                        width: 100%;
+                        text-align: center;
+                        font-size: 18px;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
     .input-container {
         .form-control {
             background-color: var(--body-color);
@@ -112,7 +172,7 @@ body.light {
 }
 
 
-@media screen and (max-width: 576px) {
+@media (min-width: 351px) and (max-width: 576px) {
     .contact-container {
         grid-template-columns: 300px;
     }
@@ -121,5 +181,21 @@ body.light {
 @media screen and (max-width: 350px) {
     .contact-container {
         grid-template-columns: 0.95fr;
+        row-gap: 1.5rem;
+
+        .contact-content {
+            .img-content {
+                margin: 0 auto;
+                max-width: 200px;
+
+                .social-links {
+                    gap: 5px;
+
+                    .social-link {
+                        padding: 4px;
+                    }
+                }
+            }
+        }
     }
 }

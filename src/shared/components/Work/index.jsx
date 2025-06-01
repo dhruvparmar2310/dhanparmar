@@ -2,12 +2,12 @@
 import { faArrowRight, faArrowUpRightFromSquare, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useRef } from 'react'
-import img1 from '../../../assets/img/mockup/ijopt-mock.png'
-import img2 from '../../../assets/img/mockup/physiozine-mock.png'
-import img3 from '../../../assets/img/mockup/rummyrani-mock.png'
-import img4 from '../../../assets/img/mockup/gorummy-mock.png'
-import img5 from '../../../assets/img/mockup/bhagvadgita-mock.png'
-import img6 from '../../../assets/img/mockup/maakrupa-mock.png'
+import img1 from '../../../assets/img/project/ijopt-preview.png'
+import img2 from '../../../assets/img/project/physiozine-preview.png'
+import img3 from '../../../assets/img/project/rummyrani-preview.png'
+import img4 from '../../../assets/img/project/gorummy-preview.png'
+import img5 from '../../../assets/img/project/bhagavadgita-preview.png'
+import img6 from '../../../assets/img/project/maakrupa-preview.png'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -17,24 +17,21 @@ const Work = () => {
   const workContainerRef = useRef(null)
 
   useEffect(() => {
-    const cards = workContainerRef.current.querySelectorAll('.work-card')
-
-    gsap.set(cards, { opacity: 0, y: 50 }) // initial ghost position
-
-    cards.forEach((card, index) => {
-      gsap.to(card, {
-        opacity: 1,
-        y: 0,
-        duration: 2, // slower (was 1 before, now 2 seconds)
-        delay: index * 0.3, // slightly bigger gap between cards
-        ease: 'power4.out', // super smooth easing
+    const ctx = gsap.context(() => {
+      gsap.from('.work-card', {
         scrollTrigger: {
-          trigger: card,
-          start: 'top 85%', // trigger earlier for softer effect
-          toggleActions: 'play none none reverse'
-        }
+          trigger: workContainerRef.current,
+          start: 'top 80%'
+        },
+        opacity: 0,
+        y: 50, // a little more distance for ghost effect
+        duration: 2, // slower
+        stagger: 0.4, // slower appearance one-by-one
+        ease: 'power3.out' // smooth, ghost-like easing
       })
-    })
+    }, workContainerRef)
+
+    return () => ctx.revert()
   }, [])
 
   return (

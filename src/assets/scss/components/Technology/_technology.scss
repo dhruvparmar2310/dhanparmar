@@ -85,14 +85,28 @@ body.light {
     }
 }
 
-@media screen and (max-width: 576px) {
+@media (min-width: 351px) and (max-width: 576px) {
     .technology {
         .inner-content {
+            width: 100% !important;
             gap: 10px;
+        }
+    }
+}
 
-            &:first-child,
-            &:nth-child(2) {
-                width: 90% !important;
+@media screen and (max-width: 350px) {
+    .technology {
+        .inner-content {
+            gap: 0;
+
+            .tech-card {
+                font-size: 15px;
+                gap: 0 !important;
+
+                .tech-icon {
+                    width: 20px !important;
+                    height: auto !important;
+                }
             }
         }
     }
