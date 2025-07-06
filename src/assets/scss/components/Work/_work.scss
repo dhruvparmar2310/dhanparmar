@@ -82,14 +82,21 @@ body.light {
     }
 }
 
-@media screen and (max-width: 1216px) {
+@media (min-width: 1025px) and (max-width: 1216px) {
     .work-container {
         grid-template-columns: repeat(2, 330px);
         gap: 2.5rem;
     }
 }
 
-@media screen and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
+    .work {
+        .work-container {
+            grid-template-columns: repeat(2, 400px);
+            gap: 1rem;
+        }
+    }
+
     .work-card {
         padding: 1rem !important;
 
@@ -117,9 +124,8 @@ body.light {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media (min-width: 577px) and (max-width: 768px) {
     .work-container {
-        margin: 0;
         grid-template-columns: 330px;
     }
 
@@ -154,6 +160,10 @@ body.light {
     .work-container {
         grid-template-columns: 320px;
         gap: 1rem;
+
+        .work-card {
+            padding: 0 !important;
+        }
     }
 }
 

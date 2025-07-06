@@ -163,9 +163,8 @@ body.light {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media (min-width: 577px) and (max-width: 768px) {
     .contact-container {
-        margin: 0;
         grid-template-columns: 360px;
         row-gap: 3rem;
     }
