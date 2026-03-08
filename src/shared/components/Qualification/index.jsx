@@ -80,11 +80,11 @@ const Qualification = () => {
                 Experience
               </h3>
               <p className="card-heading">Yudiz Solutions Ltd., Ahmedabad</p>
-              <p className="card-text">Jr. Web Developer (ReactJs Developer)</p>
-              <p className="card-date">2023 - Present</p>
+              <p className="card-text">Sr. Software Developer</p>
+              <p className="card-date">2022 - Present</p>
               <hr />
               <p className="card-text">Internship Trainee</p>
-              <p className="card-date">2022 - 2023</p>
+              <p className="card-date">2022</p>
             </div>
           </Col>
         </Row>

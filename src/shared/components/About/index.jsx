@@ -97,7 +97,7 @@ const About = () => {
   return (
     <section className="about section" id="about" ref={sectionRef}>
       <Helmet>
-        <title>About Dhruv Parmar | React & Next.js Developer</title>
+        <title>Dhruv Parmar | Software Developer</title>
         <meta
           name="description"
           content="Discover Dhruv Parmar, a React and Next.js developer with 3+ years of experience creating high-performance, SEO-optimized web applications."
@@ -134,10 +134,8 @@ const About = () => {
           <Col xl={6} lg={6} md={12} sm={12}>
             <div className="about-data">
               {[
-                'I specialize in architecting high-performance, scalable web applications with React.js, Next.js, Redux, GraphQL and React Query for efficient data fetching, transforming ideas into seamless, SEO-friendly digital experiences.',
-                'Whether integrating advanced features or optimizing existing systems, I adhere to clean-code principles, reusable component patterns, all driven by a user centric design philosophy.',
-                'My work emphasizes accessibility, responsiveness and maintainability, ensuring that each interface delivers optimal performance today and scales gracefully to meet tomorrow’s demands.',
-                'After reviewing my work, you’ll see the happy faces of my clients. I design websites from the my vision, my portfolio is just one example and I’m confident you’ll love the results.'
+                'I specialize in building high-performance, scalable web applications using React.js, Next.js, Redux, GraphQL, and React Query. My focus is on transforming ideas into seamless, SEO-friendly digital experiences through clean code, reusable component architecture, and efficient data-fetching strategies.',
+                'I follow a user-centric design approach that prioritizes accessibility, responsiveness, and long-term maintainability. Whether developing new features or optimizing existing systems, I aim to deliver interfaces that perform reliably today and scale effortlessly for the future.'
               ].map((text, i) => (
                 <p
                   key={text.slice(0, 15)}

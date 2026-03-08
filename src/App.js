@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
+import { RiJavascriptFill } from 'react-icons/ri'
 import { IoLogoInstagram, IoMdMail } from 'react-icons/io'
 import logo from './assets/img/home-img-3.jpeg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -210,6 +211,15 @@ function App () {
                   rel='noreferrer'
                 >
                   <IoLogoInstagram />
+                </a>
+                <a
+                  href='https://www.instagram.com/jswithdhruv/'
+                  target='_blank'
+                  title='Js with Dhruv | Instagram'
+                  className='social-link'
+                  rel='noreferrer'
+                >
+                  <RiJavascriptFill />
                 </a>
                 <a
                   href='https://github.com/dhruvparmar2310'

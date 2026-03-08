@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import img6 from '../../../assets/img/gallery/img-6.jpg'
-import img8 from '../../../assets/img/gallery/img-8.jpeg'
-import img9 from '../../../assets/img/gallery/img-9.jpeg'
+import img8 from '../../../assets/img/gallery/img-17.jpg'
+import img9 from '../../../assets/img/gallery/img-16.png'
 import img10 from '../../../assets/img/gallery/img-10.jpg'
 import img12 from '../../../assets/img/gallery/img-12.jpg'
-import img5 from '../../../assets/img/gallery/img-5.jpg'
+// import img5 from '../../../assets/img/gallery/img-5.jpg'
+import img15 from '../../../assets/img/gallery/img-15.jpg'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -14,8 +15,8 @@ const images = [
   { src: img9, label: 'Ride Legacy' },
   { src: img12, label: 'Karma Reflection' },
   { src: img6, label: "Nature's Golden Embrace" },
-  { src: img5, label: 'Silent Strength' },
-  { src: img8, label: 'JSX of Success' },
+  { src: img15, label: 'Silent Strength' },
+  { src: img8, label: 'Traveling Vibe' },
   { src: img10, label: 'Night Chronicles' }
 ]
 
