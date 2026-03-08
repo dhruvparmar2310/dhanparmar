@@ -17,6 +17,7 @@ import FluidCursor from './shared/components/FluidCursor'
 import FlipWords from './shared/components/FlipWords'
 import Gallery from './shared/components/Gallery'
 import { Helmet } from 'react-helmet'
+import SmoothScroll from './shared/components/SmoothScroll/SmoothScroll'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -122,6 +123,7 @@ function App () {
       </Helmet>
       <Header />
       <main className='main'>
+        <SmoothScroll>
         <section className='home' id='home'>
           <FluidCursor />
           <div className='home-container container grid'>
@@ -234,6 +236,7 @@ function App () {
             </div>
           </div>
         </footer>
+        </SmoothScroll>
       </main>
     </>
   )

@@ -66,7 +66,10 @@ const Header = () => {
       const clicksSection = document.getElementById('clicks')
       const contactSection = document.getElementById('contact')
 
-      const scrollPosition = window.scrollY
+      const scrollPosition = window.scrollY + 120
+      console.log('scrollPosition:', scrollPosition)
+      console.log('clicksSection:', clicksSection?.offsetTop)
+      console.log('contactSection:', contactSection?.offsetTop)
 
       if (scrollPosition < aboutSection?.offsetTop) {
         setCurrentSection('home')
@@ -87,11 +90,12 @@ const Header = () => {
       }
 
       // Add this to track scroll position
-      if (scrollPosition >= 30) {
-        setScrolled(true)
-      } else {
-        setScrolled(false)
-      }
+      // if (scrollPosition >= 30) {
+      //   setScrolled(true)
+      // } else {
+      //   setScrolled(false)
+      // }
+      setScrolled(window.scrollY >= 30)
     }
 
     window?.addEventListener('scroll', handleScroll)
