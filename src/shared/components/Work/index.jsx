@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useRef } from 'react'
 import img1 from '../../../assets/img/project/ijopt-preview.png'
 import img2 from '../../../assets/img/project/physiozine-preview.png'
-import img3 from '../../../assets/img/project/spinnow-ludo.png'
+import img3 from '../../../assets/img/project/grid-master.png'
 // import img4 from '../../../assets/img/project/gorummy-preview.png'
 import img4 from '../../../assets/img/project/saudi-game.png'
 import img5 from '../../../assets/img/project/bhagavadgita-preview.png'
@@ -43,13 +43,13 @@ const Work = () => {
         <div ref={workContainerRef} className='work-container container grid'>
           {/* Work Cards */}
           {[
-            { img: img1, title: 'Indian Journal of Physical Therapy', link: 'https://ijopt.co.in/' },
+            { img: img3, title: 'Grid Master Live', link: 'https://www.gridmaster.live/' },
             { img: img2, title: 'PhysioZine', link: 'https://physiozine.vercel.app/' },
-            { img: img6, title: 'MaaKrupa', link: 'https://dhruvparmar2310.github.io/MaaKrupa/index.html' },
-            // { img: img3, title: 'Rummy Rani', link: 'https://rummyrani.co.in/' },
             { img: img4, title: 'Saudi Game', link: 'https://saudi-fe.game.webdevprojects.cloud/' },
+            { img: img1, title: 'Indian Journal of Physical Therapy', link: 'https://ijopt.co.in/' },
             { img: img5, title: 'BhagavadGita - As It Is', link: 'https://bhagavad-gita-zeta.vercel.app/' },
-            { img: img3, title: 'Spinnow Ludo', link: 'https://spinnow.in/' }
+            { img: img6, title: 'MaaKrupa', link: 'https://dhruvparmar2310.github.io/MaaKrupa/index.html' }
+            // { img: img3, title: 'Rummy Rani', link: 'https://rummyrani.co.in/' },
           ].map((item, index) => (
             <div className='work-card' key={index}>
               <div className='work-card-header'>
