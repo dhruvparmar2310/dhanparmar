@@ -20,6 +20,10 @@ import CanvaLogo from '../../../assets/img/tech/canva.png'
 import ExpressLogo from '../../../assets/img/tech/Express.png'
 import JenkinsLogo from '../../../assets/img/tech/jenkins.png'
 import JiraLogo from '../../../assets/img/tech/jira.png'
+import CursorLogo from '../../../assets/img/tech/cursor-ai-logo.png'
+import ClaudeLogo from '../../../assets/img/tech/claude-code.png'
+import AntigravityLogo from '../../../assets/img/tech/antigravity-logo.png'
+import NodeLogo from '../../../assets/img/tech/node-logo.png'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -30,163 +34,127 @@ const Technology = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.tech-card', {
+      gsap.from('.tech-category-group', {
         scrollTrigger: {
           trigger: technologyCardsRef.current,
           start: 'top 80%'
         },
         opacity: 0,
-        y: 50, // a little more distance for ghost effect
-        duration: 2, // slower
-        stagger: 0.4, // slower appearance one-by-one
-        ease: 'power3.out' // smooth, ghost-like easing
+        y: 40,
+        duration: 1.5,
+        stagger: 0.2,
+        ease: 'power3.out'
       })
     }, technologyCardsRef)
 
     return () => ctx.revert()
   }, [])
 
+  const frontendTech = [
+    { name: 'ReactJs', img: ReactLogo },
+    { name: 'NextJs', img: NextJsLogo },
+    // { name: 'VueJs', img: VueLogo },
+    { name: 'React Query', img: ReactQueryLogo },
+    { name: 'GraphQL', img: GraphQLLogo },
+    { name: 'React Router', img: ReactRouterLogo },
+    { name: 'Redux', img: ReduxLogo },
+    { name: 'Tailwind CSS', img: TailwindLogo },
+    { name: 'Bootstrap', img: BootstrapLogo },
+    { name: 'Sass', img: SassLogo },
+    { name: 'Webpack', img: WebpackLogo }
+  ]
+
+  const backendTech = [
+    { name: 'NodeJs', img: NodeLogo },
+    { name: 'ExpressJs', img: ExpressLogo },
+    { name: 'Socket IO', img: SocketLogo }
+  ]
+
+  const toolsDevOps = [
+    { name: 'Git', img: GitLogo },
+    { name: 'Github', img: GithubLogo },
+    { name: 'Jenkins', img: JenkinsLogo },
+    { name: 'Jira', img: JiraLogo }
+    // { name: 'Figma', img: FigmaLogo },
+    // { name: 'Canva', img: CanvaLogo }
+    // { name: 'Figma', img: FigmaLogo }
+  ]
+
+  const aiTools = [
+    { name: 'Cursor AI', img: CursorLogo },
+    { name: 'Claude Code', img: ClaudeLogo },
+    // { name: 'ChatGPT', img: FigmaLogo },
+    { name: 'Antigravity', img: AntigravityLogo }
+  ]
+
   return (<>
     <section className="technology section" id='technology' ref={technologyCardsRef}>
       <h2 className='section-title' data-heading='Technologies I Use'>Tech Stack</h2>
 
       <div className='technology-container container'>
-        <div className='inner-content'>
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={ReactLogo} alt='React Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>ReactJs</p>
-          </div>
 
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={NextJsLogo} alt='NextJs Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>NextJs</p>
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={VueLogo} alt='VueJs Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>VueJs</p>
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={WebpackLogo} alt='Webpack Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>Webpack</p>
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={ReactQueryLogo} alt='React Query Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>React Query</p>
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={GraphQLLogo} alt='Graph QL Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>GraphQL</p>
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={ReactRouterLogo} alt='React Router Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>React Router</p>
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={ExpressLogo} alt='ExpressJs Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>ExpressJs</p>
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={ReduxLogo} alt='Redux Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>Redux</p>
-
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={GitLogo} alt='Git Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>Git</p>
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={GithubLogo} alt='Github Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>Github</p>
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={SocketLogo} alt='Socket IO Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>Socket IO</p>
-
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={BootstrapLogo} alt='Bootstrap Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>Bootstrap</p>
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={SassLogo} alt='Sass Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>Sass</p>
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={TailwindLogo} alt='Tailwind CSS Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>Tailwind CSS</p>
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={FigmaLogo} alt='Figma Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>Figma</p>
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={CanvaLogo} alt='Canva Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>Canva</p>
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={JenkinsLogo} alt='Jenkins Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>Jenkins</p>
-          </div>
-
-          <div className='tech-card'>
-            <div className='tech-icon'>
-              <img src={JiraLogo} alt='Jira Logo' className='img-fluid' />
-            </div>
-            <p className='tech-name'>Jira</p>
+        {/* Frontend Section */}
+        <div className='tech-category-group frontend-group'>
+          <h3 className='tech-category-title'>Frontend</h3>
+          <div className='inner-content'>
+            {frontendTech.map((tech, idx) => (
+              <div className='tech-card' key={idx}>
+                <div className='tech-icon'>
+                  <img src={tech.img} alt={`${tech.name} Logo`} className='img-fluid' />
+                </div>
+                <p className='tech-name'>{tech.name}</p>
+              </div>
+            ))}
           </div>
         </div>
+
+        <div className='tech-bottom-grid'>
+          {/* Backend Section */}
+          <div className='tech-category-group'>
+            <h3 className='tech-category-title'>Backend</h3>
+            <div className='inner-content'>
+              {backendTech.map((tech, idx) => (
+                <div className='tech-card' key={idx}>
+                  <div className='tech-icon'>
+                    <img src={tech.img} alt={`${tech.name} Logo`} className='img-fluid' />
+                  </div>
+                  <p className='tech-name'>{tech.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Tools & DevOps Section */}
+          <div className='tech-category-group'>
+            <h3 className='tech-category-title'>Tools & DevOps</h3>
+            <div className='inner-content'>
+              {toolsDevOps.map((tech, idx) => (
+                <div className='tech-card' key={idx}>
+                  <div className='tech-icon'>
+                    <img src={tech.img} alt={`${tech.name} Logo`} className='img-fluid' />
+                  </div>
+                  <p className='tech-name'>{tech.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* AI Tools Section */}
+          <div className='tech-category-group'>
+            <h3 className='tech-category-title'>AI Tools</h3>
+            <div className='inner-content'>
+              {aiTools.map((tech, idx) => (
+                <div className='tech-card' key={idx}>
+                  <div className='tech-icon'>
+                    <img src={tech.img} alt={`${tech.name} Logo`} className='img-fluid' />
+                  </div>
+                  <p className='tech-name'>{tech.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   </>)

@@ -8,7 +8,7 @@
 
       /* HSL Color Mode */
       --skin-color: #7943e6;
-      --secondary-color: #5c5c5c;
+      --secondary-color: #929292;
       --title-color: hsl(var(--hue-color), 8%, 95%);
       --text-color: hsl(var(--hue-color), 8%, 85%);
       --body-color: hsl(var(--hue-color), 19%, 5%);
@@ -22,6 +22,7 @@
 
       /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
       --biggest-font-size: 5.2rem;
+      --bigger-2-font-size: 4.2rem;
       --bigger-font-size: 2.5rem;
       --h1-font-size: 2.25rem;
       --h2-font-size: 1.8rem;
@@ -194,7 +195,6 @@
       background-color: black;
       z-index: 0;
       overflow: hidden;
-      cursor: none !important;
 
       &::before {
         content: "";
@@ -204,7 +204,7 @@
         width: 100%;
         height: 100%;
         z-index: -1;
-        background: url('../../img/hero.jpg') center center no-repeat;
+        background: url('../../img/hero-1.png') center center no-repeat;
         background-size: contain;
         opacity: 0.5;
         animation: fadeIn 2s ease-in-out forwards, glow 4s ease-in-out 2s infinite;
@@ -244,7 +244,7 @@
           }
 
           .title {
-            font-size: var(--biggest-font-size);
+            font-size: var(--bigger-2-font-size);
             color: var(--white-color);
           }
 
@@ -253,7 +253,7 @@
             font-weight: var(--font-bold);
             letter-spacing: .5px;
             text-transform: uppercase;
-            margin-bottom: var(--mb-0-75);
+            margin-bottom: var(--mb-2-5);
             color: var(--secondary-color);
             font-family: 'BebasNeue';
             letter-spacing: 3px;
@@ -263,7 +263,7 @@
           .description {
             max-width: 450px;
             font-size: var(--h3-font-size);
-            margin-bottom: var(--mb-2);
+            margin-bottom: var(--mb-1-5);
             letter-spacing: 1px;
             line-height: 1.6rem;
           }
@@ -408,7 +408,7 @@
       }
 
       50% {
-        filter: brightness(1.5);
+        filter: brightness(1.1);
       }
     }
 
@@ -589,9 +589,23 @@
       }
     }
 
-    @media screen and (max-width: 576px) {
+    @media (min-width: 351px) and (max-width: 576px) {
       .home {
-        padding: 7rem 0 2rem;
+        padding: 5.5rem 0 2rem;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          background: url('../../img/hero-1-mobile.png') center center no-repeat;
+          background-size: contain;
+          opacity: 0.5;
+          animation: fadeIn 2s ease-in-out forwards, glow 4s ease-in-out 2s infinite;
+        }
 
         .home-container {
           padding: 0 50px;
@@ -612,11 +626,21 @@
             left: -15px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: baseline;
 
             .title {
-              font-size: 4rem;
+              font-size: 2.5rem;
+              margin: 0;
+            }
+
+            .subtitle {
+              font-size: var(--h3-font-size);
+              margin-bottom: var(--mb-0-75);
+            }
+
+            .description {
+              font-size: var(--small-font-size);
             }
           }
 
@@ -650,6 +674,18 @@
                 font-size: var(--normal-font-size);
               }
             }
+          }
+        }
+
+        @keyframes glow {
+
+          0%,
+          100% {
+            filter: brightness(0.2);
+          }
+
+          50% {
+            filter: brightness(0.4);
           }
         }
       }
@@ -731,7 +767,7 @@
             justify-content: flex-end;
 
             .title {
-              font-size: var(--bigger-font-size) !important;
+              font-size: var(--small-font-size) !important;
             }
 
             .subtitle {

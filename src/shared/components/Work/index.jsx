@@ -3,10 +3,10 @@ import { faArrowRight, faArrowUpRightFromSquare, faTimes } from '@fortawesome/fr
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useRef } from 'react'
 import img1 from '../../../assets/img/project/ijopt-preview.png'
-import img2 from '../../../assets/img/project/physiozine-preview.png'
+import img2 from '../../../assets/img/project/physiozine-preview-2.png'
 import img3 from '../../../assets/img/project/grid-master.png'
 // import img4 from '../../../assets/img/project/gorummy-preview.png'
-import img4 from '../../../assets/img/project/saudi-game.png'
+import img4 from '../../../assets/img/project/savarkundla-scale-preview.png'
 import img5 from '../../../assets/img/project/bhagavadgita-preview.png'
 import img6 from '../../../assets/img/project/maakrupa-preview.png'
 import { gsap } from 'gsap'
@@ -45,7 +45,8 @@ const Work = () => {
           {[
             { img: img3, title: 'Grid Master Live', link: 'https://www.gridmaster.live/' },
             { img: img2, title: 'PhysioZine', link: 'https://physiozine.vercel.app/' },
-            { img: img4, title: 'Saudi Game', link: 'https://saudi-fe.game.webdevprojects.cloud/' },
+            // { img: img4, title: 'Saudi Game', link: 'https://saudi-fe.game.webdevprojects.cloud/' },
+            { img: img4, title: 'Savarkundla Scales', link: 'https://savarkundla-scales.vercel.app/' },
             { img: img1, title: 'Indian Journal of Physical Therapy', link: 'https://ijopt.co.in/' },
             { img: img5, title: 'BhagavadGita - As It Is', link: 'https://bhagavad-gita-zeta.vercel.app/' },
             { img: img6, title: 'MaaKrupa', link: 'https://dhruvparmar2310.github.io/MaaKrupa/index.html' }

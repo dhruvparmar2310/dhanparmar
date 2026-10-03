@@ -2,85 +2,148 @@
     padding: 80px 0;
     color: var(--white-color);
     position: relative;
-    z-index: 50 !important;
+    z-index: 2 !important;
 
-    &::before {
-        content: '';
-        display: block;
-        width: 800px;
-        height: 800px;
-        position: absolute;
-        top: -200px;
-        right: -250px;
-        z-index: -1 !important;
-        background-image: url('../../../img/bbblurry-1.svg');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: right;
-        filter: brightness(80%);
-    }
-
+    &::before,
     &::after {
         content: '';
         display: block;
         width: 800px;
         height: 800px;
         position: absolute;
-        bottom: -200px;
-        left: -250px;
         z-index: -1 !important;
         background-image: url('../../../img/bbblurry-1.svg');
         background-size: contain;
         background-repeat: no-repeat;
-        background-position: left;
         filter: brightness(80%);
+        pointer-events: none; // CRITICAL: Prevents decorative blobs from capturing clicks
+    }
+
+    &::before {
+        top: -200px;
+        right: -250px;
+        background-position: right;
+    }
+
+    &::after {
+        bottom: -200px;
+        left: -250px;
+        background-position: left;
     }
 
     .subheading {
         color: var(--skin-color);
         font-size: 0.9rem;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
         display: block;
         text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 8px;
     }
 
     .section-title {
         font-size: 2.5rem;
         font-weight: 700;
         color: #fff;
+        margin-bottom: 2.5rem;
+    }
+
+    /* Tabs Styling */
+    .qualification-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 10; // Ensures buttons sit cleanly above background layers
+
+        .qual-button {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            color: #aaa;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            pointer-events: auto; // Explicitly ensure buttons are clickable
+
+            &:hover {
+                color: #fff;
+                border-color: rgba(255, 255, 255, 0.2);
+            }
+
+            &.active {
+                background: var(--skin-color);
+                color: #fff;
+                border-color: var(--skin-color);
+                box-shadow: 0 5px 20px rgba(var(--skin-color-rgb, 111, 66, 193), 0.4);
+            }
+        }
     }
 
     .container {
         .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.757);
-            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
             height: 100%;
-            cursor: pointer;
+            position: relative;
+            overflow: hidden;
 
             &:hover {
-                transform: translateY(-5px) !important;
+                transform: translateY(-5px);
+                border-color: rgba(var(--skin-color-rgb, 255, 255, 255), 0.25);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
             }
 
-            .card-title {
-                font-size: 1.3rem;
-                margin-bottom: 15px;
-                display: flex;
-                align-items: center;
-                gap: 10px;
+            &.active-card {
+                border-color: rgba(var(--skin-color-rgb, 111, 66, 193), 0.4);
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            }
 
-                .icon {
+            .card-header-flex {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 20px;
+
+                .lg-icon {
+                    font-size: 1.8rem;
                     color: var(--skin-color);
+                    opacity: 0.8;
+                }
+            }
+
+            .badge-role {
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: var(--skin-color);
+                font-weight: 700;
+                display: inline-block;
+                margin-bottom: 6px;
+                background: rgba(var(--skin-color-rgb, 111, 66, 193), 0.15);
+                padding: 4px 10px;
+                border-radius: 20px;
+
+                &.text-muted-role {
+                    color: #aaa;
+                    background: rgba(255, 255, 255, 0.06);
                 }
             }
 
             .card-heading {
-                font-weight: 600;
-                font-size: 1.1rem;
+                font-weight: 700;
+                font-size: 1.25rem;
+                color: #fff;
+                margin-bottom: 4px;
             }
 
             .card-text {
@@ -89,31 +152,44 @@
                 margin: 0;
             }
 
+            .card-date-badge {
+                display: inline-flex;
+                align-items: center;
+                font-size: 0.85rem;
+                color: #bbb;
+                background: rgba(0, 0, 0, 0.2);
+                padding: 6px 12px;
+                border-radius: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.04);
+            }
+
+            .sub-role {
+                margin-top: 15px;
+            }
+
             .card-date {
                 font-size: 0.85rem;
-                color: #aaa;
+                color: #888;
             }
 
             hr {
-                border-color: rgba(255, 255, 255, 0.1);
-                margin: 15px 0;
+                border-color: rgba(255, 255, 255, 0.08);
+                margin: 20px 0;
             }
         }
 
         .resume-btn {
             font-weight: 600;
-            padding: 10px 24px;
+            padding: 12px 28px;
             font-size: 1rem;
             border-radius: 50px;
-            // background: linear-gradient(135deg, #4f46e5, #9333ea);
             border: none;
-            display: flex;
+            display: inline-flex;
             justify-content: center;
             align-items: center;
-            margin: 0 auto;
 
             &:hover {
-                background: linear-gradient(135deg, #6d28d9, #7e22ce);
+                opacity: 0.9;
             }
 
             svg {
@@ -122,52 +198,91 @@
         }
     }
 
-}
+    .timeline-horizontal-wrapper {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        gap: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
 
-body.light {
-    .qualification-section {
-        background: white;
-
-        .glass-card {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.198);
-
-            .card-title,
-            .card-text,
-            .card-date {
-                color: var(--box-color);
-            }
-
-            .card-heading {
-                color: var(--skin-color);
-            }
+        .timeline-card {
+            flex: 1;
+            min-width: 0; // Prevents flex item overflow issues
         }
 
-        hr {
-            border-color: rgb(93, 93, 93);
+        .timeline-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 40px;
+
+            .connector-line {
+                position: absolute;
+                width: 2px;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.15);
+                z-index: 1;
+            }
+
+            .connector-dot {
+                width: 10px;
+                height: 10px;
+                background: var(--skin-color);
+                border-radius: 50%;
+                z-index: 2;
+                box-shadow: 0 0 10px var(--skin-color);
+            }
         }
     }
 }
 
-@media screen and (max-width: 350px) {
+body.light {
     .qualification-section {
-        padding-bottom: 0;
+        background: #f8f9fa;
 
         .section-title {
-            margin-bottom: 30px;
-            font-size: 30px;
+            color: #111;
+        }
 
-            &::before {
-                font-size: 15px;
+        .qualification-tabs {
+            .qual-button {
+                background: rgba(0, 0, 0, 0.03);
+                border-color: rgba(0, 0, 0, 0.1);
+                color: #666;
+
+                &:hover {
+                    color: #111;
+                    border-color: rgba(0, 0, 0, 0.2);
+                }
+
+                &.active {
+                    color: var(--skin-color);
+                }
             }
         }
 
-        .resume-btn {
-            font-size: 13px !important;
-            padding: 10px 15px !important;
+        .glass-card {
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.06);
 
-            svg {
-                font-size: 18px !important;
-                margin: 0 !important;
+            &:hover {
+                box-shadow: 0 20px 20px rgba(0, 0, 0, 0.244);
+            }
+            .card-heading {
+                color: #111;
+            }
+
+            .card-text {
+                color: #555;
+            }
+
+            .card-date-badge {
+                background: rgba(0, 0, 0, 0.04);
+                color: #666;
+                border-color: rgba(0, 0, 0, 0.03);
             }
         }
     }

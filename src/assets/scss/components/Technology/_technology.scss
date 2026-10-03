@@ -22,64 +22,131 @@
     .technology-container {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        align-items: flex-start; // Left-aligned container content
+        gap: 40px;
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 25px;
 
-        .inner-content {
+        .tech-bottom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 10px; // Proper gap separating backend, tools, and AI sections
+            width: 100%;
+            align-items: start;
+        }
+
+        .tech-category-group {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            row-gap: 10px;
-            // margin: 10px 0;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: flex-start; // Left-align elements within group
 
-            .tech-card {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
-                margin: 0 5px;
-                background: rgba(255, 255, 255, 0.05);
-                backdrop-filter: blur(10px);
-                border: 2px solid rgba(255, 255, 255, 0.1);
-                padding: 5px 10px;
-                border-radius: 99px;
+            &.frontend-group {
+                width: 100%;
+            }
+
+            .tech-category-title {
+                font-size: 1rem;
+                font-weight: 600;
+                margin-bottom: 15px;
+                letter-spacing: 0.5px;
+                opacity: 0.85;
+                text-transform: uppercase;
                 position: relative;
-                z-index: 55;
+                text-align: left;
 
-                .tech-icon {
-                    width: 30px;
-                    height: 30px;
-
-                    img {
-                        width: 100%;
-                        object-fit: contain;
-                        aspect-ratio: 1/1;
-                    }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0; // Left-aligned header underline bar
+                    transform: none;
+                    bottom: -6px;
+                    width: 20px;
+                    height: 2px;
+                    background: currentColor;
+                    opacity: 0.4;
+                    border-radius: 2px;
                 }
+            }
 
-                .tech-name {
-                    padding: 0 5px;
-                    margin: 0;
+            .inner-content {
+                display: flex;
+                justify-content: flex-start; // Left-align cards list
+                align-items: center;
+                row-gap: 10px;
+                column-gap: 6px;
+                flex-wrap: wrap;
+
+                .tech-card {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 3px;
+                    margin: 4px 6px 4px 0; // Left-aligned margins
+                    background: rgba(255, 255, 255, 0.05);
+                    backdrop-filter: blur(10px);
+                    border: 2px solid rgba(255, 255, 255, 0.1);
+                    padding: 8px 12px 8px 10px;
+                    border-radius: 99px;
+                    position: relative;
+                    cursor: pointer;
+                    z-index: 55;
+                    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+
+                    &:hover {
+                        transform: translateY(-3px);
+                        border-color: rgba(255, 255, 255, 0.3);
+                        background: rgba(255, 255, 255, 0.08);
+                    }
+
+                    .tech-icon {
+                        width: 28px;
+                        height: 28px;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                            aspect-ratio: 1/1;
+                        }
+                    }
+
+                    .tech-name {
+                        padding: 0 4px;
+                        margin: 0;
+                        font-size: 1rem;
+                    }
                 }
             }
         }
     }
-
 }
 
 body.light {
     .technology {
         background: var(--white-color);
 
+        .tech-category-title {
+            color: #000;
+
+            &::after {
+                background: var(--skin-color);
+            }
+        }
+
         .inner-content {
             .tech-card {
-                background: rgba(3, 3, 3, 0.437);
-            }
+                background: rgba(255, 255, 255, 0.513) !important;
+                border-color: rgba(95, 94, 94, 0.209) !important;
 
-            span {
-                background: var(--white-color);
-                box-shadow: 0 0 30px rgb(206, 206, 206);
+                .tech-name {
+                    color: #000;
+                }
+
+                &:hover {
+                    background: rgba(3, 3, 3, 0.6);
+                }
             }
         }
     }
@@ -87,21 +154,58 @@ body.light {
 
 @media (min-width: 351px) and (max-width: 576px) {
     .technology {
-        .inner-content {
-            width: 100% !important;
-            gap: 10px;
+        .technology-container {
+            gap: 25px;
+            padding: 0 15px;
+
+            .tech-bottom-grid {
+                gap: 25px;
+            }
+
+            .tech-category-group {
+                .tech-category-title {
+                    font-size: var(--normal-font-size);
+
+                    &::after {
+                        width: 50%;
+                    }
+                }
+
+                .inner-content {
+                    width: 100% !important;
+                    gap: 5px;
+
+                    .tech-card {
+                        margin: 2px 0;
+
+                        .tech-name {
+                            font-size: var(--smaller-font-size);
+                        }
+                    }
+                }
+            }
         }
     }
 }
 
 @media screen and (max-width: 350px) {
     .technology {
+        .technology-container {
+            gap: 20px;
+            padding: 0 10px;
+
+            .tech-bottom-grid {
+                gap: 20px;
+            }
+        }
+
         .inner-content {
-            gap: 0;
+            gap: 4px;
 
             .tech-card {
                 font-size: 15px;
                 gap: 0 !important;
+                padding: 4px 8px;
 
                 .tech-icon {
                     width: 20px !important;

@@ -4,6 +4,8 @@ import { Controller, useForm } from 'react-hook-form'
 import { FaInstagram, FaPaperPlane, FaWhatsapp } from 'react-icons/fa'
 import { IoMdMail } from 'react-icons/io'
 import contact from '../../../assets/img/contact.jpeg'
+import curveArrow from '../../../assets/img/curve-arrow.png'
+
 const ContactUs = () => {
   // const navigate = useNavigate()
   const {
@@ -59,19 +61,25 @@ const ContactUs = () => {
                                 <span className="card-data">@dhan.parmar23</span>
                             </div>
                         </div> */}
-            <div className="img-content">
-              <img src={contact} className='img-fluid' />
+            <div className='left-content'>
+              <div className="img-content">
+                <img src={contact} className='img-fluid' />
 
-              <div className='social-links'>
-                <div className='social-link'>
-                  <a href='mailto:dhanparmar23@gmail.com' target='_blank' rel="noreferrer"><IoMdMail className='card-icon' /></a>
+                <div className='social-links'>
+                  <div className='social-link'>
+                    <a href='mailto:dhanparmar23@gmail.com' target='_blank' rel="noreferrer"><IoMdMail className='card-icon' /></a>
+                  </div>
+                  <div className='social-link'>
+                    <a href='tel:9586627577' target='_blank' rel="noreferrer"><FaWhatsapp className='card-icon' /></a>
+                  </div>
+                  <div className='social-link'>
+                    <a href='https://www.instagram.com/dhan.parmar23/' target='_blank' rel="noreferrer"><FaInstagram className='card-icon' /></a>
+                  </div>
                 </div>
-                <div className='social-link'>
-                  <a href='tel:9586627577' target='_blank' rel="noreferrer"><FaWhatsapp className='card-icon' /></a>
-                </div>
-                <div className='social-link'>
-                  <a href='https://www.instagram.com/dhan.parmar23/' target='_blank' rel="noreferrer"><FaInstagram className='card-icon' /></a>
-                </div>
+              </div>
+              <div className='hover-section'>
+                <span className='hover-text'>Hover Me</span>
+                <img src={curveArrow} className='img-fluid' />
               </div>
             </div>
           </div>

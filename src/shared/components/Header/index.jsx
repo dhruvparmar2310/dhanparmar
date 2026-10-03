@@ -4,6 +4,9 @@ import React, { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import logo from '../../../assets/img/logo-purple-trans.png'
 import useMediaQuery from '../../hooks/useMediaQuery'
+// import { CiLight } from 'react-icons/ci'
+import { MdLightMode } from 'react-icons/md'
+import gsap from 'gsap'
 
 const Header = () => {
   const [currentSection, setCurrentSection] = useState('home')
@@ -103,6 +106,55 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
+
+  const roll = (label) => (
+    <span className='rolling-text' aria-label={label}>
+      <span className='roll-top' aria-hidden='true'>
+        {label.split('').map((ch, i) => (
+          <span className='char' key={i}>{ch === ' ' ? '\u00A0' : ch}</span>
+        ))}
+      </span>
+      <span className='roll-bottom' aria-hidden='true'>
+        {label.split('').map((ch, i) => (
+          <span className='char' key={i}>{ch === ' ' ? '\u00A0' : ch}</span>
+        ))}
+      </span>
+    </span>
+  )
+
+  useEffect(() => {
+    const cleanups = []
+
+    const ctx = gsap.context(() => {
+      document.querySelectorAll('.nav-item').forEach((item) => {
+        const top = item.querySelectorAll('.roll-top .char')
+        const bottom = item.querySelectorAll('.roll-bottom .char')
+        if (!top.length) return // skips the theme button item
+
+        gsap.set(bottom, { yPercent: 100 })
+
+        const tl = gsap
+          .timeline({ paused: true })
+          .to(top, { yPercent: -100, duration: 0.4, ease: 'power3.inOut', stagger: 0.02 }, 0)
+          .to(bottom, { yPercent: 0, duration: 0.4, ease: 'power3.inOut', stagger: 0.02 }, 0)
+
+        const play = () => tl.play()
+        const reverse = () => tl.reverse()
+
+        item.addEventListener('mouseenter', play)
+        item.addEventListener('mouseleave', reverse)
+        cleanups.push(() => {
+          item.removeEventListener('mouseenter', play)
+          item.removeEventListener('mouseleave', reverse)
+        })
+      })
+    })
+
+    return () => {
+      cleanups.forEach((fn) => fn())
+      ctx.revert()
+    }
+  }, [])
   return (
     <>
       <div className='mobile-nav-logo'>
@@ -128,22 +180,22 @@ const Header = () => {
                   <span onClick={(e) => handleClick(e, 'home')} className={`nav-link ${currentSection === 'home' && 'active'}`}>Home</span>
                 </li> */}
                 <li className='nav-item'>
-                  <span className={`nav-link ${currentSection === 'about' && 'active'}`} onClick={(e) => handleClick(e, 'about')}>About</span>
+                  <span className={`nav-link ${currentSection === 'about' && 'active'}`} onClick={(e) => handleClick(e, 'about')}>{roll('About')}</span>
                 </li>
                 <li className='nav-item'>
-                  <span className={`nav-link ${currentSection === 'technology' && 'active'}`} onClick={(e) => handleClick(e, 'technology')}>Technology</span>
+                  <span className={`nav-link ${currentSection === 'technology' && 'active'}`} onClick={(e) => handleClick(e, 'technology')}>{roll('Technology')}</span>
                 </li>
                 <li className='nav-item'>
-                  <span className={`nav-link ${currentSection === 'work' && 'active'}`} onClick={(e) => handleClick(e, 'work')}>Projects</span>
+                  <span className={`nav-link ${currentSection === 'work' && 'active'}`} onClick={(e) => handleClick(e, 'work')}>{roll('Projects')}</span>
                 </li>
                 {/* <li className='nav-item'>
                   <span className={`nav-link ${currentSection === 'services' && 'active'}`} onClick={(e) => handleClick(e, 'services')}>Services</span>
                 </li> */}
                 <li className='nav-item'>
-                  <span className={`nav-link ${currentSection === 'clicks' && 'active'}`} onClick={(e) => handleClick(e, 'clicks')}>Gallery</span>
+                  <span className={`nav-link ${currentSection === 'clicks' && 'active'}`} onClick={(e) => handleClick(e, 'clicks')}>{roll('Gallery')}</span>
                 </li>
                 <li className='nav-item'>
-                  <span className={`nav-link ${currentSection === 'contact' && 'active'}`} onClick={(e) => handleClick(e, 'contact')}>Contact</span>
+                  <span className={`nav-link ${currentSection === 'contact' && 'active'}`} onClick={(e) => handleClick(e, 'contact')}>{roll('Contact')}</span>
                 </li>
                 <li className='nav-item'>
                   <div className='theme-mode-mobile'>
@@ -157,8 +209,9 @@ const Header = () => {
           </div>
 
           <div className='theme-mode'>
-            <Button type='button' variant='primary' className='modeBtn' onClick={handleModeClick}>
-              {mode ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}
+            <Button type='button' variant='primary' className={`modeBtn ${mode ? 'light-mode' : 'dark-mode'}`} onClick={handleModeClick}>
+              {/* {mode ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />} */}
+              {mode ? <MdLightMode /> : <MdLightMode />}
             </Button>
           </div>
 
