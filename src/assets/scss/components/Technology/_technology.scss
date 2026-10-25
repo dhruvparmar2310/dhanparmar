@@ -154,6 +154,9 @@ body.light {
 
 @media (min-width: 351px) and (max-width: 576px) {
     .technology {
+        &::before {
+            height: 70%;
+        }
         .technology-container {
             gap: 25px;
             padding: 0 15px;
